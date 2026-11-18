@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Regulatory Q&amp;A Desk on a Snowflake-Managed MCP Server</title>
+  <meta name="description" content="A compliance desk built on a Snowflake-managed MCP server: Cortex Search, Cortex Analyst and custom tools behind one governed interface, with per-role tool grants, human approval for writes and an inspector for every JSON-RPC call. Try it in your browser with synthetic data." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="nav-brand">
+        <div class="nav-logo"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 13l-7.5 7.5a2.12 2.12 0 0 1-3-3L11 10"/><path d="M16 16l6-6"/><path d="M8 8l6-6"/><path d="M9 7l8 8"/></svg></div>
+        Regulatory Q&amp;A Desk
+      </a>
+      <button class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+      <ul class="nav-links" role="list">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#capabilities">What you can do</a></li>
+        <li><a href="#walkthrough">Walkthrough</a></li>
+        <li><a href="#tour">Tour</a></li>
+        <li><a href="#modes">Two modes</a></li>
+        <li><a href="#run">Run it</a></li>
+        <li><a href="#clients">Other clients</a></li>
+        <li><a href="try/">Try it now</a></li>
+        <li><a href="https://github.com/sfc-gh-jacho/sfguide-regulatory-qa-mcp">GitHub</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero" id="hero">
+    <div class="container">
+      <div class="hero-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Financial Services · Compliance · Snowflake-Managed MCP
+      </div>
+      <h1>Regulatory <span>Q&amp;A Desk</span></h1>
+      <p>Ask whether your policies meet the rules. An MCP client calls governed Snowflake tools to search regulations and policies, judge each gap, query control testing and open remediation tickets, and Snowflake checks the caller's role on every call.</p>
+      <div class="hero-ctas">
+        <a href="try/" class="btn btn-primary">Try it in your browser</a>
+        <a href="#run" class="btn btn-ghost">How to run it</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="hero-stat-val">0</div><div class="hero-stat-label">Accounts Needed to Try</div></div>
+        <div class="hero-stat"><div class="hero-stat-val">5</div><div class="hero-stat-label">MCP Tools, One Server</div></div>
+        <div class="hero-stat"><div class="hero-stat-val">3</div><div class="hero-stat-label">Roles, Different Grants</div></div>
+        <div class="hero-stat"><div class="hero-stat-val">~20 min</div><div class="hero-stat-label">Live Setup</div></div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section id="overview">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-label">The problem</div>
+          <h2>Every AI Assistant Wants Your Data</h2>
+          <p>Compliance teams want AI help checking policies against regulations, but every assistant, IDE and agent framework needs its own integration, and each one is a new path to sensitive data. A Snowflake-managed MCP server gives all of them one standard interface to governed tools. Access to the server grants nothing on its own: each tool is granted separately, row access policies still apply, and writes can wait for a person to approve them.</p>
+        </div>
+        <div class="cortex-grid reveal">
+          <div class="cortex-card"><h3>Search the rules</h3><p><code>regulation_search</code> and <code>policy_search</code> are Cortex Search services over about 160 regulation clauses and 180 policy sections.</p></div>
+          <div class="cortex-card"><h3>Judge the gap</h3><p><code>assess_gap</code> is a SQL function that calls <code>AI_COMPLETE</code> and returns MEETS, GAP or NOT_RELATED with its reasoning.</p></div>
+          <div class="cortex-card"><h3>Query the evidence</h3><p><code>control_testing_analyst</code> is Cortex Analyst on a semantic view. It returns SQL that the client runs under its own role.</p></div>
+          <div class="cortex-card"><h3>Act, with approval</h3><p><code>open_remediation_ticket</code> is a stored procedure that writes a ticket. Only the compliance lead is granted it.</p></div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="capabilities" class="bg-alt">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-label">What you can do</div>
+          <h2>Everything This Demo Shows</h2>
+          <p>Each item below works in the browser version with the scripted questions. The label shows where else it runs.</p>
+        </div>
+        <div class="cap-list reveal">
+          <div class="cap-item"><h3>Ask whether a policy meets a rule</h3><p>Six scripted policy questions cover incident notification, record retention, MFA, privileged access, complaints and vendor reviews. Five reveal a planted gap and one shows a policy that meets the rule. Live, you can type any question.</p><span class="where">BROWSER · LOCAL · SNOWFLAKE</span></div>
+          <div class="cap-item"><h3>See the evidence side by side</h3><p>Each answer cites the regulation clause and the policy section it compared, quotes both, and explains the verdict in plain language. Nothing in the answer comes from outside the tool results.</p><span class="where">BROWSER · LOCAL · SNOWFLAKE</span></div>
+          <div class="cap-item"><h3>Ask for numbers</h3><p>"What is the failure rate by business unit in 2026-Q3?" or "Which 5 controls failed most often?" Cortex Analyst writes SQL against a semantic view, and the app shows the SQL and the rows.</p><span class="where">BROWSER · LOCAL · SNOWFLAKE</span></div>
+          <div class="cap-item"><h3>Watch the MCP protocol</h3><p>The inspector lists every <code>initialize</code>, <code>tools/list</code> and <code>tools/call</code> message with the full JSON request and response, HTTP status, content type, latency and size. You can filter by method and tool.</p><span class="where">BROWSER · LOCAL · SNOWFLAKE</span></div>
+          <div class="cap-item"><h3>Check all topics at once</h3><p>One button runs all six policy checks and builds a gap register: verdict, policy section, regulation clause, what the rule requires and what the policy says.</p><span class="where">BROWSER · LOCAL · SNOWFLAKE</span></div>
+          <div class="cap-item"><h3>Approve a write before it happens</h3><p>For each gap the app drafts an <code>open_remediation_ticket</code> call and shows its exact arguments. Nothing is written until a person selects <em>Approve and call the tool</em>.</p><span class="where">BROWSER · LOCAL · SNOWFLAKE</span></div>
+          <div class="cap-item"><h3>Switch roles and see what changes</h3><p>Compliance lead: all five tools and all business units. Compliance analyst: no ticket tool, and only Retail Banking and Payments in control tests. Internal auditor: can reach the server but every tool call is refused.</p><span class="where">BROWSER · LOCAL (SNOWFLAKE: LEAD LIVE, OTHERS REPLAYED)</span></div>
+          <div class="cap-item"><h3>Explore control testing</h3><p>Failure rates by quarter and business unit, and the controls that fail most often, filtered by the row access policy for the current role. Controls tied to the planted gaps stand out.</p><span class="where">BROWSER · LOCAL · SNOWFLAKE</span></div>
+          <div class="cap-item"><h3>See what left Snowflake</h3><p>A call-by-call list of bytes returned to the client and what each response contained (clause IDs, policy owners, SQL, verdicts, ticket IDs). Refused calls return only an error message.</p><span class="where">BROWSER · LOCAL · SNOWFLAKE</span></div>
+          <div class="cap-item"><h3>Keep an audit trail in Snowflake</h3><p>Every call the app makes is written to <code>MCP_AUDIT</code> with the role, tool, status, latency and size. The auditor and lead can read it; analysts can append but not read.</p><span class="where">LOCAL · SNOWFLAKE</span></div>
+          <div class="cap-item"><h3>Open real tickets</h3><p>As the compliance lead, approved calls insert rows into <code>REMEDIATION_TICKETS</code>, recorded with the user and role that opened them.</p><span class="where">LOCAL · SNOWFLAKE (BROWSER: KEPT IN THE PAGE)</span></div>
+          <div class="cap-item"><h3>Use the same tools from Claude or Cursor</h3><p>Point any MCP client at the server URL with OAuth. It discovers the same five tools and is held to the same grants and policies as the app.</p><span class="where">YOUR OWN MCP CLIENT</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="walkthrough">
+      <div class="container narrow">
+        <div class="section-header reveal">
+          <div class="section-label">Guided walkthrough</div>
+          <h2>A 10-Minute Click Path</h2>
+          <p>The app has eight pages and a role switch, so here is one order that tells the whole story. It works in the <a href="try/">browser version</a> with no account. Every step uses a scripted question, so the answers match what you read here.</p>
+        </div>
+
+        <h3 class="run-sub reveal">The pages, at a glance</h3>
+        <div class="pagemap reveal">
+          <div><span class="grp">START</span><b>Overview</b>The dataset, a diagram of the MCP server and its five tools, and three shortcuts.</div>
+          <div><span class="grp">ASK</span><b>1 · Ask the desk</b>Pick a question; get a cited answer, a verdict, and Cortex Analyst SQL and rows.</div>
+          <div><span class="grp">ASK</span><b>2 · MCP inspector</b>Every JSON-RPC request and response the app exchanged, newest first.</div>
+          <div><span class="grp">ACT</span><b>3 · Gaps and approvals</b>The gap register, the approval gate for tickets, and the ticket list.</div>
+          <div><span class="grp">ACT</span><b>4 · Control testing</b>Failure rates by quarter and business unit, as this role is allowed to see them.</div>
+          <div><span class="grp">TRUST</span><b>Audit: what left Snowflake</b>Bytes and content returned by each tool call, and the audit log in live mode.</div>
+          <div><span class="grp">TRUST</span><b>Roles and tool grants</b>What each role can list and call, and the grants behind it.</div>
+          <div><span class="grp">TRUST</span><b>About this example</b>How it is built, connecting Claude or Cursor, limitations, and a session reset.</div>
+          <div><span class="grp">SIDEBAR</span><b>Acting as</b>Switches the Snowflake role every call runs as. In live mode, also the MCP server switch.</div>
+        </div>
+
+        <h3 class="run-sub reveal">The click path</h3>
+        <ol class="walk reveal">
+          <li><span class="where">OVERVIEW · ACTING AS: COMPLIANCE LEAD</span><h3>Meet the setup</h3><dl>
+            <dt>Do</dt><dd>Read the diagram. Leave <em>Acting as</em> on <strong>Compliance lead</strong>.</dd>
+            <dt>Notice</dt><dd>The app is just one MCP client. Five tools sit behind one server: two Cortex Search services, Cortex Analyst, a gap UDF and a ticket procedure. The ticket tool is for the lead only.</dd></dl></li>
+          <li><span class="where">1 · ASK THE DESK</span><h3>Find a gap</h3><dl>
+            <dt>Click</dt><dd><em>How quickly must we notify the regulator of a major incident, and does our policy meet it?</em></dd>
+            <dt>Notice</dt><dd>The status box lists three tool calls: search regulations, search policies, assess the gap. The answer is <strong>Gap</strong>: the rule says 72 hours (NFCA-R01 §4.2), and the policy says 7 days (POL-07 §4). Both texts appear side by side.</dd></dl></li>
+          <li><span class="where">1 · ASK THE DESK</span><h3>See a policy that passes</h3><dl>
+            <dt>Click</dt><dd><em>Do we require multi-factor authentication for remote access…?</em></dd>
+            <dt>Notice</dt><dd>The verdict is <strong>Meets</strong>. The gap tool doesn't flag everything, and it tells a matching policy apart from a weaker one.</dd></dl></li>
+          <li><span class="where">1 · ASK THE DESK</span><h3>Ask for numbers</h3><dl>
+            <dt>Click</dt><dd><em>What is the control test failure rate by business unit in 2026-Q3?</em> Then open <em>SQL written by Cortex Analyst</em>.</dd>
+            <dt>Notice</dt><dd>This time one tool runs: Cortex Analyst returns SQL, not rows. The app runs that SQL as your role, and the lead sees <strong>three</strong> business units. Remember this for step 8.</dd></dl></li>
+          <li><span class="where">2 · MCP INSPECTOR</span><h3>Look under the hood</h3><dl>
+            <dt>Do</dt><dd>Expand a <code>tools/call</code> for <code>regulation_search</code>, then one for <code>assess_gap</code>.</dd>
+            <dt>Notice</dt><dd>The request names a tool and its arguments. The response streams back as Server-Sent Events, and you see its HTTP status, latency and size. The session started with <code>initialize</code> and <code>tools/list</code>, which is how every MCP client discovers tools.</dd></dl></li>
+          <li><span class="where">3 · GAPS AND APPROVALS</span><h3>Check every topic</h3><dl>
+            <dt>Click</dt><dd><strong>Check all scripted topics</strong>.</dd>
+            <dt>Notice</dt><dd>The gap register fills in: five gaps (incident notice, record retention, privileged access, complaint acknowledgement, vendor reviews) and one policy that meets the rule (MFA).</dd></dl></li>
+          <li><span class="where">3 · GAPS AND APPROVALS</span><h3>Approve a ticket</h3><dl>
+            <dt>Do</dt><dd>Pick a gap, read the proposed <code>open_remediation_ticket</code> call, then select <strong>Approve and call the tool</strong>.</dd>
+            <dt>Notice</dt><dd>Nothing is written until a person approves. As the lead the call succeeds, and a ticket ID appears. In live mode it is a real row in <code>REMEDIATION_TICKETS</code>.</dd></dl></li>
+          <li><span class="where">SIDEBAR → COMPLIANCE ANALYST</span><h3>Switch roles</h3><dl>
+            <dt>Do</dt><dd>Set <em>Acting as</em> to <strong>Compliance analyst</strong>. On page 3, approve the same ticket again. Then rerun the failure-rate question from step 4 and open <em>4 · Control testing</em>.</dd>
+            <dt>Notice</dt><dd>Snowflake <strong>refuses</strong> the ticket call, because the analyst has no grant on the procedure. The same failure-rate SQL now returns <strong>two</strong> business units, and Control testing shows Wealth Management as hidden by policy.</dd></dl></li>
+          <li><span class="where">SIDEBAR → INTERNAL AUDITOR · 1 · ASK THE DESK</span><h3>Try a role with no tools</h3><dl>
+            <dt>Do</dt><dd>Set <em>Acting as</em> to <strong>Internal auditor</strong> and pick any question on page 1.</dd>
+            <dt>Notice</dt><dd>The auditor can reach the server and list its tools, but every call is refused. <em>Roles and tool grants</em> shows why: the grid separates <em>listed</em> from <em>can call</em>.</dd></dl></li>
+          <li><span class="where">AUDIT: WHAT LEFT SNOWFLAKE</span><h3>Follow the data</h3><dl>
+            <dt>Do</dt><dd>Open the audit page and inspect a few payloads.</dd>
+            <dt>Notice</dt><dd>Each call shows its role, status, bytes returned and what it contained. Refused calls returned only an error message. In live mode every call is also in the <code>MCP_AUDIT</code> table.</dd></dl></li>
+        </ol>
+        <div class="callout walk-tip reveal">Want to start over? <em>About this example</em> has a <strong>Reset this session</strong> button. In live mode you can also type your own questions on page 1, for example "Do we screen outgoing payments against sanctions lists?"</div>
+      </div>
+    </section>
+
+    <section id="tour" class="bg-alt">
+      <div class="container narrow">
+        <div class="section-header reveal">
+          <div class="section-label">Tour</div>
+          <h2>The Finished Desk</h2>
+          <p>Screenshots of the running app in sample mode, the same version you can open in your browser. It replays responses captured from the real MCP server. The regulator, the bank and its data are fictional.</p>
+        </div>
+
+        <figure class="shot reveal">
+          <img src="docs/images/01-overview.webp" width="1440" height="900" loading="lazy" alt="Overview with dataset counts and a diagram of the app and other MCP clients calling five tools on one Snowflake MCP server" />
+          <figcaption><span class="cap-tag">Overview</span><strong>One server, five tools, any client.</strong> The app is an MCP client. Claude or Cursor could connect to the same server and get the same tools under the same rules.</figcaption>
+        </figure>
+
+        <figure class="shot reveal">
+          <img src="docs/images/02-ask-gap.webp" width="1440" height="900" loading="lazy" alt="Ask the desk answering that the incident notification policy falls short of the 72-hour rule, with the clause and policy section side by side" />
+          <figcaption><span class="cap-tag">Step 1 · Ask</span><strong>A cited answer, built from tool results.</strong> The regulation requires notice within 72 hours. Our incident policy allows 7 days. The clause and the policy section appear side by side, and the verdict comes from the gap tool.</figcaption>
+        </figure>
+
+        <figure class="shot reveal">
+          <img src="docs/images/03-ask-analyst.webp" width="1440" height="900" loading="lazy" alt="Cortex Analyst answer with failure rate by business unit and the generated SQL" />
+          <figcaption><span class="cap-tag">Step 1 · Numbers</span><strong>Cortex Analyst writes the SQL; your role runs it.</strong> The same question returns three business units for the lead and two for the analyst, because the row access policy lives on the table.</figcaption>
+        </figure>
+
+        <figure class="shot reveal">
+          <img src="docs/images/04-inspector.webp" width="1440" height="900" loading="lazy" alt="MCP inspector showing a tools/call JSON-RPC request and its response with timing and size" />
+          <figcaption><span class="cap-tag">Step 2 · Inspector</span><strong>The protocol, in plain sight.</strong> Every <code>initialize</code>, <code>tools/list</code> and <code>tools/call</code> message the app exchanged with the server, with HTTP status, latency and bytes returned.</figcaption>
+        </figure>
+
+        <figure class="shot reveal">
+          <img src="docs/images/05-approval-refused.webp" width="1440" height="900" loading="lazy" alt="Approval gate for a remediation ticket, with the analyst's approved call refused by Snowflake" />
+          <figcaption><span class="cap-tag">Step 3 · Approve</span><strong>A person approves every write, and Snowflake still decides.</strong> Here the analyst approves a ticket and Snowflake refuses the call, because only the compliance lead holds a grant on the procedure.</figcaption>
+        </figure>
+
+        <figure class="shot reveal">
+          <img src="docs/images/06-governance.webp" width="1440" height="900" loading="lazy" alt="Grid of which tools each role can call, with the grants behind it" />
+          <figcaption><span class="cap-tag">Governance</span><strong>Listed is not the same as allowed.</strong> Every role with usage on the server can list its tools. Calls succeed only where the role holds a grant on the underlying search service, semantic view, function or procedure.</figcaption>
+        </figure>
+
+        <figure class="shot reveal">
+          <img src="docs/images/07-audit.webp" width="1440" height="900" loading="lazy" alt="Audit page listing every tool call with bytes returned and what each response contained" />
+          <figcaption><span class="cap-tag">Audit</span><strong>What left Snowflake.</strong> Tool results go to the MCP client and its model provider. This page lists each call, how many bytes it returned and what it contained. In live mode, every call is also written to an audit table.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="modes">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-label">Two modes</div>
+          <h2>Click Around First, Connect Later</h2>
+          <p>The same Streamlit code runs both ways. The difference is where the MCP responses come from: a file recorded from the real server, or the real server itself. The sidebar always shows which one you are using, and every answer is labeled <em>Replay of a captured MCP call</em> or <em>Live call to the MCP server</em>.</p>
+        </div>
+        <div class="mode-grid reveal">
+          <div class="mode-card">
+            <h3>Captured replay, in your browser</h3>
+            <ul>
+              <li>No Snowflake account, login or install</li>
+              <li>Python runs in the browser with <a href="https://github.com/whitphx/stlite">stlite</a></li>
+              <li>Replays <strong>real MCP responses</strong> captured from the server, labeled as replays</li>
+              <li>Eight scripted questions, for each of the three roles</li>
+            </ul>
+            <p style="margin-top:16px"><a href="try/" class="btn btn-primary">Try it now</a></p>
+          </div>
+          <div class="mode-card">
+            <h3>Live, against your MCP server</h3>
+            <ul>
+              <li>JSON-RPC over HTTPS to <code>REGQA_MCP</code> in your account</li>
+              <li>Ask any question, not just the scripted ones</li>
+              <li>Locally, switch between all three roles</li>
+              <li>In Streamlit in Snowflake, runs as the compliance lead</li>
+              <li>Tickets and the audit log written to Snowflake</li>
+            </ul>
+            <p style="margin-top:16px"><a href="#run" class="btn btn-ghost" style="color:var(--navy);border-color:var(--border)">Set it up</a></p>
+          </div>
+        </div>
+
+        <div class="compare-wrap reveal">
+          <table class="compare">
+            <thead><tr><th scope="col"></th><th scope="col">Captured replay</th><th scope="col">Live Snowflake</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Where the answers come from</th><td>A file, <code>data/captured_mcp.json</code>, recorded from the real <code>REGQA_MCP</code> server by <code>scripts/capture.py</code>. The JSON you see in the inspector is exactly what the server returned when it was recorded.</td><td>JSON-RPC calls over HTTPS to the <code>REGQA_MCP</code> server in your account, made at the moment you ask.</td></tr>
+              <tr><th scope="row">What you need</th><td>Nothing. It runs in your browser, or on a laptop with <code>REGQA_SAMPLE_ONLY=1</code>.</td><td>A Snowflake account with the setup script run, and either a local connection or the app deployed to Streamlit in Snowflake.</td></tr>
+              <tr><th scope="row">Questions you can ask</th><td>The eight scripted questions, for each of the three roles. Free-text questions are turned off.</td><td>Anything. The search, gap, Cortex Analyst and ticket tools run for real.</td></tr>
+              <tr><th scope="row">AI output</th><td>The verdicts, explanations and SQL that <code>AI_COMPLETE</code> and Cortex Analyst produced in the recorded run. They don't change.</td><td>Generated fresh on each call, so wording can vary slightly between runs.</td></tr>
+              <tr><th scope="row">Roles and refusals</th><td>The recorded responses for each role, including Snowflake's real refusal messages.</td><td>Enforced by Snowflake on every call. Locally the app opens a session per role. In Streamlit in Snowflake it runs as the compliance lead, and the other two roles are shown from the replay.</td></tr>
+              <tr><th scope="row">Control testing data</th><td>Generated in the app from the same seed as the Snowflake tables, filtered with the same business-unit rule as the row access policy.</td><td>Read from <code>CONTROL_TESTS</code>, filtered by the row access policy.</td></tr>
+              <tr><th scope="row">Tickets</th><td>Kept in your browser session only. The ticket ID shown is the one from the recorded run.</td><td>Inserted into <code>REMEDIATION_TICKETS</code> with your user and role.</td></tr>
+              <tr><th scope="row">Audit trail</th><td>The inspector and audit pages, for this session.</td><td>The same pages, plus every call written to <code>MCP_AUDIT</code>.</td></tr>
+              <tr><th scope="row">Timing</th><td>The latency recorded with each call. The replay itself is instant.</td><td>About half a second per search, and 5 to 12 seconds per gap assessment or Cortex Analyst call.</td></tr>
+              <tr><th scope="row">Data leaving your device</th><td>None. The browser version runs entirely in the page.</td><td>Tool results go from Snowflake to the app. With Claude or Cursor, they also go to that client's model provider.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="run" class="bg-alt">
+      <div class="container narrow">
+        <div class="section-header reveal">
+          <div class="section-label">How to run it</div>
+          <h2>Three Ways to Run the Demo</h2>
+        </div>
+
+        <h3 class="run-sub reveal">A. In your browser (no account)</h3>
+        <ul class="checklist reveal">
+          <li><strong>Open the browser version.</strong> Go to <a href="try/">Try it now</a>. Python loads in about 15 seconds.</li>
+          <li><strong>Ask a question.</strong> On <em>1 · Ask the desk</em>, pick "How quickly must we notify the regulator…". The desk searches, assesses and answers with citations.</li>
+          <li><strong>Open the inspector.</strong> <em>2 · MCP inspector</em> shows each JSON-RPC request and response.</li>
+          <li><strong>Switch roles.</strong> Change <em>Acting as</em> in the sidebar to <em>Compliance analyst</em>, then approve a ticket on <em>3 · Gaps and approvals</em> and watch Snowflake refuse it. Try <em>Internal auditor</em> to see every tool refused.</li>
+        </ul>
+
+        <h3 class="run-sub reveal">B. On your laptop, against your account</h3>
+        <ul class="checklist reveal">
+          <li><strong>Prerequisites:</strong> Enterprise Edition, Cortex Search, Cortex Analyst and <code>AI_COMPLETE</code> in your region, and a Snowflake CLI connection.</li>
+          <li><strong>1. Run the setup script.</strong> Replace <code>&lt;YOUR_USER&gt;</code> in <a href="sql/regqa_setup.sql" download>sql/regqa_setup.sql</a> and run it in a Snowsight worksheet, or with <code>snow sql -f sql/regqa_setup.sql --enable-templating NONE</code>. It creates the data, two search services, a semantic view, two custom tools, the MCP server, three roles and a row access policy, then checks them. Skip the optional app step for now.</li>
+          <li><strong>2. Install and run.</strong> <code>pip install "streamlit[snowflake]==1.65.0" altair requests</code>, then <code>SNOWFLAKE_DEFAULT_CONNECTION_NAME=&lt;connection&gt; streamlit run streamlit_app.py</code>. Your user needs the three <code>REGQA_</code> roles, which the script grants.</li>
+          <li><strong>3. Switch to live.</strong> Choose <em>Live Snowflake</em> in the sidebar. The app opens one session per role, so each call runs with that role's grants.</li>
+        </ul>
+
+        <h3 class="run-sub reveal">C. In Streamlit in Snowflake</h3>
+        <ul class="checklist reveal">
+          <li><strong>1. Run the app step.</strong> In the setup script's <em>app</em> step, set <code>&lt;YOUR_ORG&gt;-&lt;YOUR_ACCOUNT&gt;</code> (with hyphens) and your compute pool and PyPI integration names, then run it. It lets the compliance lead own the app and reach the account's MCP endpoint.</li>
+          <li><strong>2. Deploy as the lead.</strong> <code>snow streamlit deploy regqa_desk --role REGQA_COMPLIANCE_LEAD</code>. If your connection can't switch roles, use <code>python scripts/deploy_as_role.py</code>.</li>
+          <li><strong>3. Clean up.</strong> Uncomment and run the cleanup step. Dropping <code>REGQA_DEMO_DB</code> also removes the app.</li>
+        </ul>
+        <div class="callout reveal">On an XSMALL warehouse, setup takes about a minute. Search calls return in about half a second, and a gap assessment or Cortex Analyst call takes 5 to 12 seconds. The Streamlit container uses its compute pool while the app is open.</div>
+      </div>
+    </section>
+
+    <section id="clients">
+      <div class="container narrow">
+        <div class="section-header reveal">
+          <div class="section-label">Other MCP clients</div>
+          <h2>Connect Claude or Cursor to the Same Tools</h2>
+          <p>After setup, any MCP client can use the server. Create an OAuth security integration, set your user's default role to one of the <code>REGQA_</code> roles, and add the server URL. Use hyphens, not underscores, in the host name.</p>
+        </div>
+        <pre class="url-block reveal"><code>https://&lt;org&gt;-&lt;account&gt;.snowflakecomputing.com/api/v2/databases/REGQA_DEMO_DB/schemas/DESK/mcp-servers/REGQA_MCP</code></pre>
+        <div class="callout reveal">Tool results leave Snowflake. Whatever a tool returns goes to the client and, through it, to its model provider. Decide what each tool may return before you expose it, and prefer OAuth over long-lived tokens.</div>
+      </div>
+    </section>
+
+    <section id="conclusion" class="bg-alt">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-label">Snowflake capabilities</div>
+          <h2>What Each Step Uses</h2>
+        </div>
+        <div class="cortex-grid reveal">
+          <div class="cortex-card"><h3>Snowflake-managed MCP server</h3><p>One <code>CREATE MCP SERVER</code> statement exposes five tools to any MCP client.</p></div>
+          <div class="cortex-card"><h3>Cortex Search and Cortex Analyst</h3><p>Ranked regulation and policy text, and SQL from plain-language questions.</p></div>
+          <div class="cortex-card"><h3>AI_COMPLETE in a custom tool</h3><p>A structured gap verdict, returned as JSON through MCP.</p></div>
+          <div class="cortex-card"><h3>RBAC and row access policies</h3><p>Per-tool grants, a write tool for one role, and filtered rows for every client.</p></div>
+        </div>
+        <div class="doc-links reveal">
+          <h3>Learn more in the Snowflake documentation</h3>
+          <div class="doc-grid">
+            <a href="https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp" target="_blank" rel="noopener">Snowflake-managed MCP server →</a>
+            <a href="https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-search/cortex-search-overview" target="_blank" rel="noopener">Cortex Search →</a>
+            <a href="https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-analyst" target="_blank" rel="noopener">Cortex Analyst →</a>
+            <a href="https://docs.snowflake.com/en/sql-reference/functions/ai_complete" target="_blank" rel="noopener">AI_COMPLETE →</a>
+            <a href="https://docs.snowflake.com/en/user-guide/security-row-intro" target="_blank" rel="noopener">Row access policies →</a>
+            <a href="https://docs.snowflake.com/en/developer-guide/streamlit/about-streamlit" target="_blank" rel="noopener">Streamlit in Snowflake →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-col">
+          <h4>Desk</h4>
+          <a href="try/">Try it in your browser</a>
+          <a href="#tour">Tour</a>
+          <a href="#run">How to run it</a>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <a href="sql/regqa_setup.sql" download>Download setup SQL</a>
+          <a href="https://github.com/sfc-gh-jacho/sfguide-regulatory-qa-mcp">GitHub Repository</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-disclaimer"><strong>Owner:</strong> Janet Cho · <strong>Last reviewed:</strong> November 2026. Code licensed under <a href="https://github.com/sfc-gh-jacho/sfguide-regulatory-qa-mcp/blob/main/LICENSE">Apache 2.0</a>. Illustrative example provided as-is; not an official Snowflake product, not supported by Snowflake Support, and not legal or regulatory advice. The regulator, the bank, its policies, owners and control test results are all fictional, and counts describe this synthetic data set only. Gap verdicts are AI judgements that a person should review. The in-browser version loads stlite and Pyodide from the jsDelivr CDN; this landing page loads no third-party resources.</p>
+        <span class="snow-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="2" x2="12" y2="22"/><line x1="3.3" y1="7" x2="20.7" y2="17"/><line x1="3.3" y1="17" x2="20.7" y2="7"/></svg>
+          Built on a Snowflake-managed MCP server
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

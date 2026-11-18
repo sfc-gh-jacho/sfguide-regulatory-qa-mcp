@@ -1,0 +1,41 @@
+definition_version: 2
+entities:
+  regqa_desk:
+    type: streamlit
+    identifier:
+      name: REGULATORY_QA_DESK
+      database: REGQA_DEMO_DB
+      schema: DESK
+    query_warehouse: REGQA_WH
+    runtime_name: SYSTEM$ST_CONTAINER_RUNTIME_PY3_11
+    compute_pool: SYSTEM_COMPUTE_POOL_CPU            # your account's DEFAULT_STREAMLIT_COMPUTE_POOL
+    external_access_integrations:
+      - PYPI_ACCESS_INTEGRATION                      # installs the pinned packages in pyproject.toml
+      - REGQA_MCP_ACCESS                             # lets the app call this account's MCP endpoint
+    main_file: streamlit_app.py
+    artifacts:
+      - streamlit_app.py
+      - pyproject.toml
+      - .streamlit/config.toml
+      - app_pages/about.py
+      - app_pages/ask.py
+      - app_pages/audit.py
+      - app_pages/controls.py
+      - app_pages/gaps.py
+      - app_pages/governance.py
+      - app_pages/inspector.py
+      - app_pages/overview.py
+      - regqa/__init__.py
+      - regqa/data.py
+      - regqa/desk.py
+      - regqa/mcp.py
+      - regqa/roles.py
+      - regqa/source.py
+      - regqa/ui.py
+      - data/captured_mcp.json
+      - static/Inter-Bold.ttf
+      - static/Inter-Medium.ttf
+      - static/Inter-Regular.ttf
+      - static/Inter-SemiBold.ttf
+      - static/JetBrainsMono-Medium.ttf
+      - static/JetBrainsMono-Regular.ttf

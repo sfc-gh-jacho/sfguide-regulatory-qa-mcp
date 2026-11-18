@@ -1,0 +1,1967 @@
+{
+ "captured_at": "2026-11-18",
+ "calls": {
+  "REGQA_ANALYST": {
+   "regulation_search {\"columns\": [\"CLAUSE_ID\", \"REGULATION_TITLE\", \"HEADING\", \"TEXT\"], \"limit\": 4, \"query\": \"How quickly must we notify the regulator of a major incident, and does our policy meet it?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 3,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "[{\"HEADING\":\"Regulatory incident notification timeliness\",\"@scores\":{\"text_match\":0.04239381,\"cosine_similarity\":0.6144637,\"reranker_score\":1.763957},\"TEXT\":\"A firm must notify the Authority of a major operational incident within 72 hours of determining that the incident is major.\",\"CLAUSE_ID\":\"NFCA-R01 §4.2\",\"REGULATION_TITLE\":\"Operational Resilience Rule\"},{\"HEADING\":\"Regulatory incident notification timeliness: evidence\",\"@scores\":{\"text_match\":0.016415535,\"cosine_similarity\":0.4811023,\"reranker_score\":-4.0733356},\"TEXT\":\"A firm must keep evidence that it meets clause 4.2 and make that evidence available to the Authority on request.\",\"REGULATION_TITLE\":\"Operational Resilience Rule\",\"CLAUSE_ID\":\"NFCA-R01 §4.7\"},{\"HEADING\":\"Breaches\",\"@scores\":{\"text_match\":1.38624E-7,\"cosine_similarity\":0.47370088,\"reranker_score\":-6.807064},\"TEXT\":\"A firm must notify the Authority promptly if it becomes aware that it has breached this rule.\",\"CLAUSE_ID\":\"NFCA-R01 §6.1\",\"REGULATION_TITLE\":\"Operational Resilience Rule\"},{\"HEADING\":\"Breaches\",\"@scores\":{\"text_match\":1.4530109E-7,\"cosine_similarity\":0.48362565,\"reranker_score\":-7.490782},\"TEXT\":\"A firm must notify the Authority promptly if it becomes aware that it has breached this rule.\",\"REGULATION_TITLE\":\"Suitability and Disclosure Rule\",\"CLAUSE_ID\":\"NFCA-R10 §6.1\"}]"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 413
+   },
+   "policy_search {\"columns\": [\"SECTION_ID\", \"POLICY_TITLE\", \"HEADING\", \"TEXT\", \"OWNER\"], \"limit\": 4, \"query\": \"How quickly must we notify the regulator of a major incident, and does our policy meet it?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 4,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "[{\"HEADING\":\"Regulatory incident notification timeliness\",\"OWNER\":\"Head of Security Operations\",\"@scores\":{\"text_match\":0.08636157,\"cosine_similarity\":0.6598352,\"reranker_score\":1.8178194},\"POLICY_TITLE\":\"Cyber Incident Response Policy\",\"TEXT\":\"The Incident Manager notifies the regulator of a major operational incident within 7 calendar days of classification.\",\"SECTION_ID\":\"POL-07 §4\"},{\"HEADING\":\"Surveillance alert review timeliness\",\"OWNER\":\"Head of Markets Compliance\",\"@scores\":{\"text_match\":0.005753137,\"cosine_similarity\":0.42162395,\"reranker_score\":-7.669654},\"POLICY_TITLE\":\"Trading Conduct Policy\",\"TEXT\":\"Market abuse surveillance alerts are reviewed within five business days.\",\"SECTION_ID\":\"POL-20 §4\"},{\"HEADING\":\"Review\",\"OWNER\":\"Head of Security Operations\",\"@scores\":{\"text_match\":0.011146744,\"cosine_similarity\":0.4327675,\"reranker_score\":-8.367897},\"POLICY_TITLE\":\"Cyber Incident Response Policy\",\"TEXT\":\"The Head of Security Operations reviews this policy at least annually and after any material regulatory change.\",\"SECTION_ID\":\"POL-07 §9\"},{\"HEADING\":\"Monitoring\",\"OWNER\":\"Head of Security Operations\",\"@scores\":{\"text_match\":0.011146745,\"cosine_similarity\":0.4171548,\"reranker_score\":-8.954445},\"POLICY_TITLE\":\"Cyber Incident Response Policy\",\"TEXT\":\"Compliance with this policy is tested by the second line of defence, and results are reported to the Risk Committee.\",\"SECTION_ID\":\"POL-07 §8\"}]"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 569
+   },
+   "assess_gap {\"clause_ref\": \"NFCA-R01 §4.2\", \"section_ref\": \"POL-07 §4\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 5,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "{\n  \"explanation\": \"The regulation requires notification within 72 hours, which is equivalent to 3 days. The policy requires notification within 7 calendar days. Since 7 days is longer than 3 days, the policy is weaker than the regulation.\",\n  \"policy_says\": \"7 days\",\n  \"regulation_requires\": \"3 days\",\n  \"verdict\": \"GAP\"\n}"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 10442
+   },
+   "open_remediation_ticket {\"clause_id\": \"NFCA-R01 §4.2\", \"section_id\": \"POL-07 §4\", \"severity\": \"HIGH\", \"summary\": \"Cyber Incident Response Policy POL-07 §4 falls short of NFCA-R01 §4.2, which requires 3 days. Update the policy and its control to match.\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 6,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "MCP error calling tool open_remediation_ticket: Tool result error: [{\"error\":\"Failed with http status 422, error code 002141: SQL compilation error:\\nUnknown user-defined function REGQA_DEMO_DB.DESK.OPEN_REMEDIATION_TICKET.\",\"query_id\":\"\",\"result\":\"\"}]\nrequest-id: <redacted>"
+       }
+      ],
+      "isError": true
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 5695
+   },
+   "regulation_search {\"columns\": [\"CLAUSE_ID\", \"REGULATION_TITLE\", \"HEADING\", \"TEXT\"], \"limit\": 4, \"query\": \"How long must we keep customer transaction records, and does our records policy comply?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 7,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "[{\"HEADING\":\"Record retention period\",\"@scores\":{\"text_match\":0.041464232,\"cosine_similarity\":0.6345353,\"reranker_score\":-0.12039605},\"TEXT\":\"A firm must retain records of customer transactions and communications for at least seven years.\",\"CLAUSE_ID\":\"NFCA-R03 §2.1\",\"REGULATION_TITLE\":\"Records and Retention Rule\"},{\"HEADING\":\"Data access request timeliness\",\"@scores\":{\"text_match\":1.4231577E-7,\"cosine_similarity\":0.44348347,\"reranker_score\":-5.6144357},\"TEXT\":\"A firm must respond to a customer's request for access to their personal data within 30 days.\",\"REGULATION_TITLE\":\"Customer Data Privacy Rule\",\"CLAUSE_ID\":\"NFCA-R09 §3.3\"},{\"HEADING\":\"Transition\",\"@scores\":{\"text_match\":0.002053175,\"cosine_similarity\":0.4266274,\"reranker_score\":-6.092657},\"TEXT\":\"A firm must comply with this rule from its effective date unless the Authority has granted a written waiver.\",\"CLAUSE_ID\":\"NFCA-R09 §6.2\",\"REGULATION_TITLE\":\"Customer Data Privacy Rule\"},{\"HEADING\":\"Data access request timeliness: evidence\",\"@scores\":{\"text_match\":1.3818773E-7,\"cosine_similarity\":0.40607697,\"reranker_score\":-6.4128895},\"TEXT\":\"A firm must keep evidence that it meets clause 3.3 and make that evidence available to the Authority on request.\",\"CLAUSE_ID\":\"NFCA-R09 §3.8\",\"REGULATION_TITLE\":\"Customer Data Privacy Rule\"}]"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 600
+   },
+   "policy_search {\"columns\": [\"SECTION_ID\", \"POLICY_TITLE\", \"HEADING\", \"TEXT\", \"OWNER\"], \"limit\": 4, \"query\": \"How long must we keep customer transaction records, and does our records policy comply?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 8,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "[{\"HEADING\":\"Record retention period\",\"OWNER\":\"Head of Records Management\",\"@scores\":{\"text_match\":0.07432041,\"cosine_similarity\":0.64671063,\"reranker_score\":-1.4219695},\"POLICY_TITLE\":\"Records Management Policy\",\"TEXT\":\"Customer transaction and communication records are retained for five years and then deleted.\",\"SECTION_ID\":\"POL-11 §3\"},{\"HEADING\":\"Review\",\"OWNER\":\"Data Protection Officer\",\"@scores\":{\"text_match\":1.5040386E-7,\"cosine_similarity\":0.4428717,\"reranker_score\":-7.13408},\"POLICY_TITLE\":\"Customer Data Privacy Policy\",\"TEXT\":\"The Data Protection Officer reviews this policy at least annually and after any material regulatory change.\",\"SECTION_ID\":\"POL-08 §9\"},{\"HEADING\":\"Data access request timeliness\",\"OWNER\":\"Data Protection Officer\",\"@scores\":{\"text_match\":1.3938492E-7,\"cosine_similarity\":0.42371166,\"reranker_score\":-6.8231997},\"POLICY_TITLE\":\"Customer Data Privacy Policy\",\"TEXT\":\"Data subject access requests are answered within 30 days.\",\"SECTION_ID\":\"POL-08 §5\"},{\"HEADING\":\"Standards\",\"OWNER\":\"Data Protection Officer\",\"@scores\":{\"text_match\":1.7117588E-7,\"cosine_similarity\":0.4446869,\"reranker_score\":-7.79279},\"POLICY_TITLE\":\"Customer Data Privacy Policy\",\"TEXT\":\"Business units follow the procedures in this policy for the processing and protection of customer personal data, and record evidence in the control library.\",\"SECTION_ID\":\"POL-08 §3\"}]"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 399
+   },
+   "assess_gap {\"clause_ref\": \"NFCA-R03 §2.1\", \"section_ref\": \"POL-11 §3\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 9,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "{\n  \"explanation\": \"The regulation requires a retention period of at least seven years, while the policy only retains records for five years.\",\n  \"policy_says\": \"five years\",\n  \"regulation_requires\": \"at least seven years\",\n  \"verdict\": \"GAP\"\n}"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 8441
+   },
+   "open_remediation_ticket {\"clause_id\": \"NFCA-R03 §2.1\", \"section_id\": \"POL-11 §3\", \"severity\": \"HIGH\", \"summary\": \"Records Management Policy POL-11 §3 falls short of NFCA-R03 §2.1, which requires at least seven years. Update the policy and its control to match.\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 10,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "MCP error calling tool open_remediation_ticket: Tool result error: [{\"error\":\"Failed with http status 422, error code 002141: SQL compilation error:\\nUnknown user-defined function REGQA_DEMO_DB.DESK.OPEN_REMEDIATION_TICKET.\",\"query_id\":\"\",\"result\":\"\"}]\nrequest-id: <redacted>"
+       }
+      ],
+      "isError": true
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 4976
+   },
+   "regulation_search {\"columns\": [\"CLAUSE_ID\", \"REGULATION_TITLE\", \"HEADING\", \"TEXT\"], \"limit\": 4, \"query\": \"Do we require multi-factor authentication for remote access, as the cybersecurity rule requires?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 11,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "[{\"HEADING\":\"Multi-factor authentication coverage\",\"@scores\":{\"text_match\":0.19835916,\"cosine_similarity\":0.677601,\"reranker_score\":2.6777937},\"TEXT\":\"A firm must require multi-factor authentication for all remote access to its systems and for all privileged accounts.\",\"CLAUSE_ID\":\"NFCA-R02 §3.4\",\"REGULATION_TITLE\":\"Cybersecurity Requirements\"},{\"HEADING\":\"Multi-factor authentication coverage: evidence\",\"@scores\":{\"text_match\":0.09856505,\"cosine_similarity\":0.5989933,\"reranker_score\":-2.7358484},\"TEXT\":\"A firm must keep evidence that it meets clause 3.4 and make that evidence available to the Authority on request.\",\"REGULATION_TITLE\":\"Cybersecurity Requirements\",\"CLAUSE_ID\":\"NFCA-R02 §3.9\"},{\"HEADING\":\"Application\",\"@scores\":{\"text_match\":1.5023693E-7,\"cosine_similarity\":0.55017763,\"reranker_score\":-6.3354187},\"TEXT\":\"This rule applies to every firm authorised by the Authority, including branches that serve customers in its jurisdiction.\",\"REGULATION_TITLE\":\"Cybersecurity Requirements\",\"CLAUSE_ID\":\"NFCA-R02 §1.2\"},{\"HEADING\":\"Purpose\",\"@scores\":{\"text_match\":1.5897533E-7,\"cosine_similarity\":0.5140912,\"reranker_score\":-6.6375203},\"TEXT\":\"This rule sets out the Authority's requirements for information security controls over systems and data.\",\"REGULATION_TITLE\":\"Cybersecurity Requirements\",\"CLAUSE_ID\":\"NFCA-R02 §1.1\"}]"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 577
+   },
+   "policy_search {\"columns\": [\"SECTION_ID\", \"POLICY_TITLE\", \"HEADING\", \"TEXT\", \"OWNER\"], \"limit\": 4, \"query\": \"Do we require multi-factor authentication for remote access, as the cybersecurity rule requires?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 12,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "[{\"HEADING\":\"Multi-factor authentication coverage\",\"OWNER\":\"Chief Information Security Officer\",\"@scores\":{\"text_match\":0.10659485,\"cosine_similarity\":0.6445646,\"reranker_score\":0.5005667},\"POLICY_TITLE\":\"Identity and Access Management Standard\",\"TEXT\":\"Multi-factor authentication is mandatory for all remote access and for every privileged account.\",\"SECTION_ID\":\"POL-05 §3\"},{\"HEADING\":\"Exceptions\",\"OWNER\":\"Chief Information Security Officer\",\"@scores\":{\"text_match\":0.0075741243,\"cosine_similarity\":0.41471475,\"reranker_score\":-8.535886},\"POLICY_TITLE\":\"Identity and Access Management Standard\",\"TEXT\":\"Exceptions to this policy require written approval from the Chief Information Security Officer and are recorded in the exceptions register.\",\"SECTION_ID\":\"POL-05 §7\"},{\"HEADING\":\"Monitoring\",\"OWNER\":\"Chief Information Security Officer\",\"@scores\":{\"text_match\":0.0075741177,\"cosine_similarity\":0.36452687,\"reranker_score\":-8.046828},\"POLICY_TITLE\":\"Identity and Access Management Standard\",\"TEXT\":\"Compliance with this policy is tested by the second line of defence, and results are reported to the Risk Committee.\",\"SECTION_ID\":\"POL-05 §8\"},{\"HEADING\":\"Exceptions\",\"OWNER\":\"Head of Security Operations\",\"@scores\":{\"text_match\":1.1172078E-7,\"cosine_similarity\":0.38731527,\"reranker_score\":-8.631861},\"POLICY_TITLE\":\"Cyber Incident Response Policy\",\"TEXT\":\"Exceptions to this policy require written approval from the Head of Security Operations and are recorded in the exceptions register.\",\"SECTION_ID\":\"POL-07 §7\"}]"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 524
+   },
+   "assess_gap {\"clause_ref\": \"NFCA-R02 §3.4\", \"section_ref\": \"POL-05 §3\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 13,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "{\n  \"explanation\": \"The regulation and policy both cover the same obligation of requiring multi-factor authentication for remote access and privileged accounts, with no specific deadlines, frequencies, retention periods, or scopes that differ. The policy mirrors the regulation's requirements without introducing any weaker conditions.\",\n  \"policy_says\": \"Multi-factor authentication is mandatory for all remote access and for every privileged account.\",\n  \"regulation_requires\": \"A firm must require multi-factor authentication for all remote access to its systems and for all privileged accounts.\",\n  \"verdict\": \"MEETS\"\n}"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 14426
+   },
+   "regulation_search {\"columns\": [\"CLAUSE_ID\", \"REGULATION_TITLE\", \"HEADING\", \"TEXT\"], \"limit\": 4, \"query\": \"How often must privileged access be recertified, and what does our access standard say?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 14,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "[{\"HEADING\":\"Privileged access recertification\",\"@scores\":{\"text_match\":0.10157753,\"cosine_similarity\":0.7268883,\"reranker_score\":0.68832606},\"TEXT\":\"A firm must recertify privileged access rights at least quarterly.\",\"CLAUSE_ID\":\"NFCA-R02 §3.6\",\"REGULATION_TITLE\":\"Cybersecurity Requirements\"},{\"HEADING\":\"Privileged access recertification: evidence\",\"@scores\":{\"text_match\":0.092610724,\"cosine_similarity\":0.6408055,\"reranker_score\":-4.2812433},\"TEXT\":\"A firm must keep evidence that it meets clause 3.6 and make that evidence available to the Authority on request.\",\"REGULATION_TITLE\":\"Cybersecurity Requirements\",\"CLAUSE_ID\":\"NFCA-R02 §3.11\"},{\"HEADING\":\"High-risk customer due diligence refresh\",\"@scores\":{\"text_match\":1.0580048E-7,\"cosine_similarity\":0.37199438,\"reranker_score\":-8.817602},\"TEXT\":\"A firm must refresh customer due diligence for high-risk customers at least annually.\",\"REGULATION_TITLE\":\"Anti-Money Laundering Program Rule\",\"CLAUSE_ID\":\"NFCA-R06 §2.4\"},{\"HEADING\":\"Multi-factor authentication coverage\",\"@scores\":{\"text_match\":0.01419596,\"cosine_similarity\":0.37631893,\"reranker_score\":-9.171839},\"TEXT\":\"A firm must require multi-factor authentication for all remote access to its systems and for all privileged accounts.\",\"CLAUSE_ID\":\"NFCA-R02 §3.4\",\"REGULATION_TITLE\":\"Cybersecurity Requirements\"}]"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 637
+   },
+   "policy_search {\"columns\": [\"SECTION_ID\", \"POLICY_TITLE\", \"HEADING\", \"TEXT\", \"OWNER\"], \"limit\": 4, \"query\": \"How often must privileged access be recertified, and what does our access standard say?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 15,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "[{\"HEADING\":\"Privileged access recertification\",\"OWNER\":\"Chief Information Security Officer\",\"@scores\":{\"text_match\":0.056224834,\"cosine_similarity\":0.7059307,\"reranker_score\":1.348731},\"POLICY_TITLE\":\"Identity and Access Management Standard\",\"TEXT\":\"System owners recertify privileged access rights semi-annually.\",\"SECTION_ID\":\"POL-05 §4\"},{\"HEADING\":\"Review\",\"OWNER\":\"Chief Information Security Officer\",\"@scores\":{\"text_match\":0.016855046,\"cosine_similarity\":0.41293156,\"reranker_score\":-6.830856},\"POLICY_TITLE\":\"Identity and Access Management Standard\",\"TEXT\":\"The Chief Information Security Officer reviews this policy at least annually and after any material regulatory change.\",\"SECTION_ID\":\"POL-05 §9\"},{\"HEADING\":\"High-risk customer due diligence refresh\",\"OWNER\":\"Money Laundering Reporting Officer\",\"@scores\":{\"text_match\":1.2454531E-7,\"cosine_similarity\":0.44441104,\"reranker_score\":-8.273119},\"POLICY_TITLE\":\"Customer Due Diligence Standard\",\"TEXT\":\"Customer due diligence for high-risk customers is refreshed every 12 months.\",\"SECTION_ID\":\"POL-10 §3\"},{\"HEADING\":\"Multi-factor authentication coverage\",\"OWNER\":\"Chief Information Security Officer\",\"@scores\":{\"text_match\":0.03271679,\"cosine_similarity\":0.4185362,\"reranker_score\":-7.9835396},\"POLICY_TITLE\":\"Identity and Access Management Standard\",\"TEXT\":\"Multi-factor authentication is mandatory for all remote access and for every privileged account.\",\"SECTION_ID\":\"POL-05 §3\"}]"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 855
+   },
+   "assess_gap {\"clause_ref\": \"NFCA-R02 §3.6\", \"section_ref\": \"POL-05 §4\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 16,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "{\n  \"explanation\": \"The REGULATION NFCA-R02 §3.6 requires recertification of privileged access rights at least quarterly, which means every 3 months. The POLICY POL-05 §4 requires recertification semi-annually, which means every 6 months. Since the policy recertifies less frequently than the regulation, it is weaker.\",\n  \"policy_says\": \"semi-annually\",\n  \"regulation_requires\": \"at least quarterly\",\n  \"verdict\": \"GAP\"\n}"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 12219
+   },
+   "open_remediation_ticket {\"clause_id\": \"NFCA-R02 §3.6\", \"section_id\": \"POL-05 §4\", \"severity\": \"HIGH\", \"summary\": \"Identity and Access Management Standard POL-05 §4 falls short of NFCA-R02 §3.6, which requires at least quarterly. Update the policy and its control to match.\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 17,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "MCP error calling tool open_remediation_ticket: Tool result error: [{\"error\":\"Failed with http status 422, error code 002141: SQL compilation error:\\nUnknown user-defined function REGQA_DEMO_DB.DESK.OPEN_REMEDIATION_TICKET.\",\"query_id\":\"\",\"result\":\"\"}]\nrequest-id: <redacted>"
+       }
+      ],
+      "isError": true
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 7524
+   },
+   "regulation_search {\"columns\": [\"CLAUSE_ID\", \"REGULATION_TITLE\", \"HEADING\", \"TEXT\"], \"limit\": 4, \"query\": \"How quickly must we acknowledge a customer complaint, and does our procedure meet that?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 18,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "[{\"HEADING\":\"Complaint acknowledgement timeliness\",\"@scores\":{\"text_match\":0.07417421,\"cosine_similarity\":0.66909933,\"reranker_score\":0.7175695},\"TEXT\":\"A firm must acknowledge a customer complaint in writing within five business days of receipt.\",\"CLAUSE_ID\":\"NFCA-R05 §2.1\",\"REGULATION_TITLE\":\"Complaints Handling Rule\"},{\"HEADING\":\"Complaint final response within eight weeks\",\"@scores\":{\"text_match\":0.024835352,\"cosine_similarity\":0.5405423,\"reranker_score\":-3.3942533},\"TEXT\":\"A firm must send a final response to a complaint within eight weeks of receipt.\",\"CLAUSE_ID\":\"NFCA-R05 §2.3\",\"REGULATION_TITLE\":\"Complaints Handling Rule\"},{\"HEADING\":\"Complaint final response within eight weeks: evidence\",\"@scores\":{\"text_match\":0.01950932,\"cosine_similarity\":0.4994892,\"reranker_score\":-5.0189166},\"TEXT\":\"A firm must keep evidence that it meets clause 2.3 and make that evidence available to the Authority on request.\",\"CLAUSE_ID\":\"NFCA-R05 §2.8\",\"REGULATION_TITLE\":\"Complaints Handling Rule\"},{\"HEADING\":\"Complaint acknowledgement timeliness: evidence\",\"@scores\":{\"text_match\":0.022919983,\"cosine_similarity\":0.49312824,\"reranker_score\":-4.943637},\"TEXT\":\"A firm must keep evidence that it meets clause 2.1 and make that evidence available to the Authority on request.\",\"CLAUSE_ID\":\"NFCA-R05 §2.6\",\"REGULATION_TITLE\":\"Complaints Handling Rule\"}]"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 719
+   },
+   "policy_search {\"columns\": [\"SECTION_ID\", \"POLICY_TITLE\", \"HEADING\", \"TEXT\", \"OWNER\"], \"limit\": 4, \"query\": \"How quickly must we acknowledge a customer complaint, and does our procedure meet that?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 19,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "[{\"HEADING\":\"Complaint acknowledgement timeliness\",\"OWNER\":\"Head of Customer Experience\",\"@scores\":{\"text_match\":0.04019533,\"cosine_similarity\":0.607914,\"reranker_score\":-1.1355748},\"POLICY_TITLE\":\"Complaints Handling Procedure\",\"TEXT\":\"Complaints are acknowledged in writing within 10 business days of receipt.\",\"SECTION_ID\":\"POL-16 §3\"},{\"HEADING\":\"Complaint final response within eight weeks\",\"OWNER\":\"Head of Customer Experience\",\"@scores\":{\"text_match\":0.03731174,\"cosine_similarity\":0.5419819,\"reranker_score\":-4.1501865},\"POLICY_TITLE\":\"Complaints Handling Procedure\",\"TEXT\":\"A final response is issued within eight weeks of receiving a complaint.\",\"SECTION_ID\":\"POL-16 §4\"},{\"HEADING\":\"Review\",\"OWNER\":\"Head of Customer Experience\",\"@scores\":{\"text_match\":0.02100727,\"cosine_similarity\":0.47449064,\"reranker_score\":-7.4892235},\"POLICY_TITLE\":\"Complaints Handling Procedure\",\"TEXT\":\"The Head of Customer Experience reviews this policy at least annually and after any material regulatory change.\",\"SECTION_ID\":\"POL-16 §9\"},{\"HEADING\":\"Purpose\",\"OWNER\":\"Head of Customer Experience\",\"@scores\":{\"text_match\":0.03383803,\"cosine_similarity\":0.4561414,\"reranker_score\":-7.4387975},\"POLICY_TITLE\":\"Complaints Handling Procedure\",\"TEXT\":\"This policy describes how Harborline Bank (fictional) meets its obligations for the receipt, handling and resolution of customer complaints.\",\"SECTION_ID\":\"POL-16 §1\"}]"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 1632
+   },
+   "assess_gap {\"clause_ref\": \"NFCA-R05 §2.1\", \"section_ref\": \"POL-16 §3\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 20,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "{\n  \"explanation\": \"The regulation requires a written acknowledgement of a customer complaint within 5 business days, while the policy allows for acknowledgement within 10 business days. Since 10 business days is longer than 5 business days, the policy is weaker than the regulation.\",\n  \"policy_says\": \"10 business days\",\n  \"regulation_requires\": \"5 business days\",\n  \"verdict\": \"GAP\"\n}"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 7613
+   },
+   "open_remediation_ticket {\"clause_id\": \"NFCA-R05 §2.1\", \"section_id\": \"POL-16 §3\", \"severity\": \"HIGH\", \"summary\": \"Complaints Handling Procedure POL-16 §3 falls short of NFCA-R05 §2.1, which requires 5 business days. Update the policy and its control to match.\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 21,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "MCP error calling tool open_remediation_ticket: Tool result error: [{\"error\":\"Failed with http status 422, error code 002141: SQL compilation error:\\nUnknown user-defined function REGQA_DEMO_DB.DESK.OPEN_REMEDIATION_TICKET.\",\"query_id\":\"\",\"result\":\"\"}]\nrequest-id: <redacted>"
+       }
+      ],
+      "isError": true
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 4204
+   },
+   "regulation_search {\"columns\": [\"CLAUSE_ID\", \"REGULATION_TITLE\", \"HEADING\", \"TEXT\"], \"limit\": 4, \"query\": \"Are critical vendors reviewed as often as the third-party risk rule requires?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 22,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "[{\"HEADING\":\"Critical vendor periodic risk review\",\"@scores\":{\"text_match\":0.028260756,\"cosine_similarity\":0.7360902,\"reranker_score\":3.1741242},\"TEXT\":\"A firm must review the risk of each critical third-party service provider at least annually.\",\"CLAUSE_ID\":\"NFCA-R04 §3.3\",\"REGULATION_TITLE\":\"Third-Party Risk Rule\"},{\"HEADING\":\"Critical vendor periodic risk review: evidence\",\"@scores\":{\"text_match\":0.019074338,\"cosine_similarity\":0.64770615,\"reranker_score\":1.6673838},\"TEXT\":\"A firm must keep evidence that it meets clause 3.3 and make that evidence available to the Authority on request.\",\"CLAUSE_ID\":\"NFCA-R04 §3.8\",\"REGULATION_TITLE\":\"Third-Party Risk Rule\"},{\"HEADING\":\"Critical vendor exit plans\",\"@scores\":{\"text_match\":0.021502757,\"cosine_similarity\":0.59586155,\"reranker_score\":-0.5379747},\"TEXT\":\"A firm must maintain a tested exit plan for each critical third-party service provider.\",\"CLAUSE_ID\":\"NFCA-R04 §4.1\",\"REGULATION_TITLE\":\"Third-Party Risk Rule\"},{\"HEADING\":\"Critical vendor exit plans: evidence\",\"@scores\":{\"text_match\":0.017181136,\"cosine_similarity\":0.55359113,\"reranker_score\":-2.3610663},\"TEXT\":\"A firm must keep evidence that it meets clause 4.1 and make that evidence available to the Authority on request.\",\"CLAUSE_ID\":\"NFCA-R04 §4.6\",\"REGULATION_TITLE\":\"Third-Party Risk Rule\"}]"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 497
+   },
+   "policy_search {\"columns\": [\"SECTION_ID\", \"POLICY_TITLE\", \"HEADING\", \"TEXT\", \"OWNER\"], \"limit\": 4, \"query\": \"Are critical vendors reviewed as often as the third-party risk rule requires?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 23,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "[{\"HEADING\":\"Critical vendor periodic risk review\",\"OWNER\":\"Chief Procurement Officer\",\"@scores\":{\"text_match\":0.124771014,\"cosine_similarity\":0.73024523,\"reranker_score\":2.5256286},\"POLICY_TITLE\":\"Third-Party Risk Management Standard\",\"TEXT\":\"Critical vendors receive a full risk review every 24 months.\",\"SECTION_ID\":\"POL-14 §4\"},{\"HEADING\":\"Critical vendor exit plans\",\"OWNER\":\"Chief Procurement Officer\",\"@scores\":{\"text_match\":0.123530686,\"cosine_similarity\":0.60991734,\"reranker_score\":-0.18777508},\"POLICY_TITLE\":\"Third-Party Risk Management Standard\",\"TEXT\":\"Each critical vendor has an exit plan that is tested at least every two years.\",\"SECTION_ID\":\"POL-14 §5\"},{\"HEADING\":\"Review\",\"OWNER\":\"Chief Procurement Officer\",\"@scores\":{\"text_match\":0.06907925,\"cosine_similarity\":0.55660576,\"reranker_score\":-4.2941284},\"POLICY_TITLE\":\"Third-Party Risk Management Standard\",\"TEXT\":\"The Chief Procurement Officer reviews this policy at least annually and after any material regulatory change.\",\"SECTION_ID\":\"POL-14 §9\"},{\"HEADING\":\"Pre-contract vendor due diligence\",\"OWNER\":\"Chief Procurement Officer\",\"@scores\":{\"text_match\":0.08703851,\"cosine_similarity\":0.4507203,\"reranker_score\":-5.751773},\"POLICY_TITLE\":\"Third-Party Risk Management Standard\",\"TEXT\":\"Due diligence is completed and approved before any third-party contract is signed.\",\"SECTION_ID\":\"POL-14 §3\"}]"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 395
+   },
+   "assess_gap {\"clause_ref\": \"NFCA-R04 §3.3\", \"section_ref\": \"POL-14 §4\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 24,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "{\n  \"explanation\": \"The regulation requires a review of critical third-party service providers at least annually, which means every 12 months. The policy states that critical vendors receive a full risk review every 24 months, which is equivalent to every 2 years. Since 24 months is longer than 12 months, the policy is weaker than the regulation.\",\n  \"policy_says\": \"every 24 months\",\n  \"regulation_requires\": \"at least annually\",\n  \"verdict\": \"GAP\"\n}"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 19681
+   },
+   "open_remediation_ticket {\"clause_id\": \"NFCA-R04 §3.3\", \"section_id\": \"POL-14 §4\", \"severity\": \"HIGH\", \"summary\": \"Third-Party Risk Management Standard POL-14 §4 falls short of NFCA-R04 §3.3, which requires at least annually. Update the policy and its control to match.\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 25,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "MCP error calling tool open_remediation_ticket: Tool result error: [{\"error\":\"Failed with http status 422, error code 002141: SQL compilation error:\\nUnknown user-defined function REGQA_DEMO_DB.DESK.OPEN_REMEDIATION_TICKET.\",\"query_id\":\"\",\"result\":\"\"}]\nrequest-id: <redacted>"
+       }
+      ],
+      "isError": true
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 4648
+   },
+   "control_testing_analyst {\"message\": \"What is the control test failure rate by business unit in 2026-Q3?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 26,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "[{\"text\":\"This is our interpretation of your question:\\n\\nWhat is the control test failure rate (share of tests that failed) by business unit for calendar quarter 2026-Q3?\"},{\"statement\":\"SELECT *\\nFROM SEMANTIC_VIEW(\\n  REGQA_DEMO_DB.DESK.CONTROL_TESTS_SV\\n  METRICS failure_rate\\n  DIMENSIONS business_unit\\n  WHERE quarter = '2026-Q3'\\n)\\n -- Generated by Cortex Analyst (request_id: 084bca29-4f4b-407e-99ab-a3119cc46c01)\\n;\",\"confidence\":{}}]"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 8962
+   },
+   "control_testing_analyst {\"message\": \"Which 5 controls failed most often across all quarters, and how many failures did each have?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 27,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "[{\"text\":\"This is our interpretation of your question:\\n\\nWhich 5 controls had the highest number of failed tests across all quarters in the entire available time period, and how many failures did each control have?\"},{\"statement\":\"SELECT *\\nFROM SEMANTIC_VIEW(\\n  REGQA_DEMO_DB.DESK.CONTROL_TESTS_SV\\n  METRICS failed_tests\\n  DIMENSIONS controls.control_name\\n)\\nORDER BY failed_tests DESC NULLS LAST\\nLIMIT 5\\n -- Generated by Cortex Analyst (request_id: bad42f94-3edd-40c3-a7fc-16d95c1c9307)\\n;\",\"confidence\":{}}]"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 6866
+   }
+  },
+  "REGQA_COMPLIANCE_LEAD": {
+   "regulation_search {\"columns\": [\"CLAUSE_ID\", \"REGULATION_TITLE\", \"HEADING\", \"TEXT\"], \"limit\": 4, \"query\": \"How quickly must we notify the regulator of a major incident, and does our policy meet it?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 2,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "[{\"HEADING\":\"Regulatory incident notification timeliness\",\"@scores\":{\"text_match\":0.04239381,\"cosine_similarity\":0.6144637,\"reranker_score\":1.763957},\"TEXT\":\"A firm must notify the Authority of a major operational incident within 72 hours of determining that the incident is major.\",\"REGULATION_TITLE\":\"Operational Resilience Rule\",\"CLAUSE_ID\":\"NFCA-R01 §4.2\"},{\"HEADING\":\"Regulatory incident notification timeliness: evidence\",\"@scores\":{\"text_match\":0.016415535,\"cosine_similarity\":0.4811023,\"reranker_score\":-4.0733356},\"TEXT\":\"A firm must keep evidence that it meets clause 4.2 and make that evidence available to the Authority on request.\",\"CLAUSE_ID\":\"NFCA-R01 §4.7\",\"REGULATION_TITLE\":\"Operational Resilience Rule\"},{\"HEADING\":\"Breaches\",\"@scores\":{\"text_match\":1.38624E-7,\"cosine_similarity\":0.47370088,\"reranker_score\":-6.807064},\"TEXT\":\"A firm must notify the Authority promptly if it becomes aware that it has breached this rule.\",\"CLAUSE_ID\":\"NFCA-R01 §6.1\",\"REGULATION_TITLE\":\"Operational Resilience Rule\"},{\"HEADING\":\"Breaches\",\"@scores\":{\"text_match\":1.4530109E-7,\"cosine_similarity\":0.48362565,\"reranker_score\":-7.490782},\"TEXT\":\"A firm must notify the Authority promptly if it becomes aware that it has breached this rule.\",\"REGULATION_TITLE\":\"Suitability and Disclosure Rule\",\"CLAUSE_ID\":\"NFCA-R10 §6.1\"}]"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 805
+   },
+   "policy_search {\"columns\": [\"SECTION_ID\", \"POLICY_TITLE\", \"HEADING\", \"TEXT\", \"OWNER\"], \"limit\": 4, \"query\": \"How quickly must we notify the regulator of a major incident, and does our policy meet it?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 3,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "[{\"HEADING\":\"Regulatory incident notification timeliness\",\"OWNER\":\"Head of Security Operations\",\"@scores\":{\"text_match\":0.08636157,\"cosine_similarity\":0.6598352,\"reranker_score\":1.8178194},\"POLICY_TITLE\":\"Cyber Incident Response Policy\",\"TEXT\":\"The Incident Manager notifies the regulator of a major operational incident within 7 calendar days of classification.\",\"SECTION_ID\":\"POL-07 §4\"},{\"HEADING\":\"Surveillance alert review timeliness\",\"OWNER\":\"Head of Markets Compliance\",\"@scores\":{\"text_match\":0.005753137,\"cosine_similarity\":0.42162395,\"reranker_score\":-7.669654},\"POLICY_TITLE\":\"Trading Conduct Policy\",\"TEXT\":\"Market abuse surveillance alerts are reviewed within five business days.\",\"SECTION_ID\":\"POL-20 §4\"},{\"HEADING\":\"Review\",\"OWNER\":\"Head of Security Operations\",\"@scores\":{\"text_match\":0.011146744,\"cosine_similarity\":0.4327675,\"reranker_score\":-8.367897},\"POLICY_TITLE\":\"Cyber Incident Response Policy\",\"TEXT\":\"The Head of Security Operations reviews this policy at least annually and after any material regulatory change.\",\"SECTION_ID\":\"POL-07 §9\"},{\"HEADING\":\"Monitoring\",\"OWNER\":\"Head of Security Operations\",\"@scores\":{\"text_match\":0.011146745,\"cosine_similarity\":0.4171548,\"reranker_score\":-8.954445},\"POLICY_TITLE\":\"Cyber Incident Response Policy\",\"TEXT\":\"Compliance with this policy is tested by the second line of defence, and results are reported to the Risk Committee.\",\"SECTION_ID\":\"POL-07 §8\"}]"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 1126
+   },
+   "assess_gap {\"clause_ref\": \"NFCA-R01 §4.2\", \"section_ref\": \"POL-07 §4\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 4,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "{\n  \"explanation\": \"The regulation requires notification within 72 hours, which is equivalent to 3 days. The policy requires notification within 7 calendar days. Since 7 days is longer than 3 days, the policy is weaker than the regulation.\",\n  \"policy_says\": \"7 days\",\n  \"regulation_requires\": \"3 days\",\n  \"verdict\": \"GAP\"\n}"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 9978
+   },
+   "open_remediation_ticket {\"clause_id\": \"NFCA-R01 §4.2\", \"section_id\": \"POL-07 §4\", \"severity\": \"HIGH\", \"summary\": \"Cyber Incident Response Policy POL-07 §4 falls short of NFCA-R01 §4.2, which requires 3 days. Update the policy and its control to match.\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 5,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "Opened REM-261118-1365 (HIGH) for POL-07 §4 against NFCA-R01 §4.2"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 6471
+   },
+   "regulation_search {\"columns\": [\"CLAUSE_ID\", \"REGULATION_TITLE\", \"HEADING\", \"TEXT\"], \"limit\": 4, \"query\": \"How long must we keep customer transaction records, and does our records policy comply?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 6,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "[{\"HEADING\":\"Record retention period\",\"@scores\":{\"text_match\":0.041464232,\"cosine_similarity\":0.6345353,\"reranker_score\":-0.12039605},\"TEXT\":\"A firm must retain records of customer transactions and communications for at least seven years.\",\"CLAUSE_ID\":\"NFCA-R03 §2.1\",\"REGULATION_TITLE\":\"Records and Retention Rule\"},{\"HEADING\":\"Data access request timeliness\",\"@scores\":{\"text_match\":1.4231577E-7,\"cosine_similarity\":0.44348347,\"reranker_score\":-5.6144357},\"TEXT\":\"A firm must respond to a customer's request for access to their personal data within 30 days.\",\"REGULATION_TITLE\":\"Customer Data Privacy Rule\",\"CLAUSE_ID\":\"NFCA-R09 §3.3\"},{\"HEADING\":\"Transition\",\"@scores\":{\"text_match\":0.002053175,\"cosine_similarity\":0.4266274,\"reranker_score\":-6.092657},\"TEXT\":\"A firm must comply with this rule from its effective date unless the Authority has granted a written waiver.\",\"CLAUSE_ID\":\"NFCA-R09 §6.2\",\"REGULATION_TITLE\":\"Customer Data Privacy Rule\"},{\"HEADING\":\"Data access request timeliness: evidence\",\"@scores\":{\"text_match\":1.3818773E-7,\"cosine_similarity\":0.40607697,\"reranker_score\":-6.4128895},\"TEXT\":\"A firm must keep evidence that it meets clause 3.3 and make that evidence available to the Authority on request.\",\"CLAUSE_ID\":\"NFCA-R09 §3.8\",\"REGULATION_TITLE\":\"Customer Data Privacy Rule\"}]"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 542
+   },
+   "policy_search {\"columns\": [\"SECTION_ID\", \"POLICY_TITLE\", \"HEADING\", \"TEXT\", \"OWNER\"], \"limit\": 4, \"query\": \"How long must we keep customer transaction records, and does our records policy comply?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 7,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "[{\"HEADING\":\"Record retention period\",\"OWNER\":\"Head of Records Management\",\"@scores\":{\"text_match\":0.07432041,\"cosine_similarity\":0.64671063,\"reranker_score\":-1.4219695},\"POLICY_TITLE\":\"Records Management Policy\",\"TEXT\":\"Customer transaction and communication records are retained for five years and then deleted.\",\"SECTION_ID\":\"POL-11 §3\"},{\"HEADING\":\"Review\",\"OWNER\":\"Data Protection Officer\",\"@scores\":{\"text_match\":1.5040386E-7,\"cosine_similarity\":0.4428717,\"reranker_score\":-7.13408},\"POLICY_TITLE\":\"Customer Data Privacy Policy\",\"TEXT\":\"The Data Protection Officer reviews this policy at least annually and after any material regulatory change.\",\"SECTION_ID\":\"POL-08 §9\"},{\"HEADING\":\"Data access request timeliness\",\"OWNER\":\"Data Protection Officer\",\"@scores\":{\"text_match\":1.3938492E-7,\"cosine_similarity\":0.42371166,\"reranker_score\":-6.8231997},\"POLICY_TITLE\":\"Customer Data Privacy Policy\",\"TEXT\":\"Data subject access requests are answered within 30 days.\",\"SECTION_ID\":\"POL-08 §5\"},{\"HEADING\":\"Standards\",\"OWNER\":\"Data Protection Officer\",\"@scores\":{\"text_match\":1.7117588E-7,\"cosine_similarity\":0.4446869,\"reranker_score\":-7.79279},\"POLICY_TITLE\":\"Customer Data Privacy Policy\",\"TEXT\":\"Business units follow the procedures in this policy for the processing and protection of customer personal data, and record evidence in the control library.\",\"SECTION_ID\":\"POL-08 §3\"}]"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 472
+   },
+   "assess_gap {\"clause_ref\": \"NFCA-R03 §2.1\", \"section_ref\": \"POL-11 §3\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 8,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "{\n  \"explanation\": \"The regulation requires a retention period of at least seven years, while the policy only retains records for five years.\",\n  \"policy_says\": \"five years\",\n  \"regulation_requires\": \"at least seven years\",\n  \"verdict\": \"GAP\"\n}"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 7711
+   },
+   "open_remediation_ticket {\"clause_id\": \"NFCA-R03 §2.1\", \"section_id\": \"POL-11 §3\", \"severity\": \"HIGH\", \"summary\": \"Records Management Policy POL-11 §3 falls short of NFCA-R03 §2.1, which requires at least seven years. Update the policy and its control to match.\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 9,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "Opened REM-261118-0741 (HIGH) for POL-11 §3 against NFCA-R03 §2.1"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 6346
+   },
+   "regulation_search {\"columns\": [\"CLAUSE_ID\", \"REGULATION_TITLE\", \"HEADING\", \"TEXT\"], \"limit\": 4, \"query\": \"Do we require multi-factor authentication for remote access, as the cybersecurity rule requires?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 10,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "[{\"HEADING\":\"Multi-factor authentication coverage\",\"@scores\":{\"text_match\":0.19835916,\"cosine_similarity\":0.677601,\"reranker_score\":2.6777937},\"TEXT\":\"A firm must require multi-factor authentication for all remote access to its systems and for all privileged accounts.\",\"REGULATION_TITLE\":\"Cybersecurity Requirements\",\"CLAUSE_ID\":\"NFCA-R02 §3.4\"},{\"HEADING\":\"Multi-factor authentication coverage: evidence\",\"@scores\":{\"text_match\":0.09856505,\"cosine_similarity\":0.5989933,\"reranker_score\":-2.7358484},\"TEXT\":\"A firm must keep evidence that it meets clause 3.4 and make that evidence available to the Authority on request.\",\"CLAUSE_ID\":\"NFCA-R02 §3.9\",\"REGULATION_TITLE\":\"Cybersecurity Requirements\"},{\"HEADING\":\"Application\",\"@scores\":{\"text_match\":1.5023693E-7,\"cosine_similarity\":0.55017763,\"reranker_score\":-6.3354187},\"TEXT\":\"This rule applies to every firm authorised by the Authority, including branches that serve customers in its jurisdiction.\",\"CLAUSE_ID\":\"NFCA-R02 §1.2\",\"REGULATION_TITLE\":\"Cybersecurity Requirements\"},{\"HEADING\":\"Purpose\",\"@scores\":{\"text_match\":1.5897533E-7,\"cosine_similarity\":0.5140912,\"reranker_score\":-6.6375203},\"TEXT\":\"This rule sets out the Authority's requirements for information security controls over systems and data.\",\"CLAUSE_ID\":\"NFCA-R02 §1.1\",\"REGULATION_TITLE\":\"Cybersecurity Requirements\"}]"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 545
+   },
+   "policy_search {\"columns\": [\"SECTION_ID\", \"POLICY_TITLE\", \"HEADING\", \"TEXT\", \"OWNER\"], \"limit\": 4, \"query\": \"Do we require multi-factor authentication for remote access, as the cybersecurity rule requires?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 11,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "[{\"HEADING\":\"Multi-factor authentication coverage\",\"OWNER\":\"Chief Information Security Officer\",\"@scores\":{\"text_match\":0.10659485,\"cosine_similarity\":0.6445646,\"reranker_score\":0.5005667},\"POLICY_TITLE\":\"Identity and Access Management Standard\",\"TEXT\":\"Multi-factor authentication is mandatory for all remote access and for every privileged account.\",\"SECTION_ID\":\"POL-05 §3\"},{\"HEADING\":\"Exceptions\",\"OWNER\":\"Chief Information Security Officer\",\"@scores\":{\"text_match\":0.0075741243,\"cosine_similarity\":0.41471475,\"reranker_score\":-8.535886},\"POLICY_TITLE\":\"Identity and Access Management Standard\",\"TEXT\":\"Exceptions to this policy require written approval from the Chief Information Security Officer and are recorded in the exceptions register.\",\"SECTION_ID\":\"POL-05 §7\"},{\"HEADING\":\"Monitoring\",\"OWNER\":\"Chief Information Security Officer\",\"@scores\":{\"text_match\":0.0075741177,\"cosine_similarity\":0.36452687,\"reranker_score\":-8.046828},\"POLICY_TITLE\":\"Identity and Access Management Standard\",\"TEXT\":\"Compliance with this policy is tested by the second line of defence, and results are reported to the Risk Committee.\",\"SECTION_ID\":\"POL-05 §8\"},{\"HEADING\":\"Exceptions\",\"OWNER\":\"Head of Security Operations\",\"@scores\":{\"text_match\":1.1172078E-7,\"cosine_similarity\":0.38731527,\"reranker_score\":-8.631861},\"POLICY_TITLE\":\"Cyber Incident Response Policy\",\"TEXT\":\"Exceptions to this policy require written approval from the Head of Security Operations and are recorded in the exceptions register.\",\"SECTION_ID\":\"POL-07 §7\"}]"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 496
+   },
+   "assess_gap {\"clause_ref\": \"NFCA-R02 §3.4\", \"section_ref\": \"POL-05 §3\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 12,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "{\n  \"explanation\": \"The regulation and policy both cover the same obligation of requiring multi-factor authentication for remote access and privileged accounts, with no specific deadlines, frequencies, retention periods, or scopes that differ. The policy mirrors the regulation's requirements without introducing any weaker conditions.\",\n  \"policy_says\": \"Multi-factor authentication is mandatory for all remote access and for every privileged account.\",\n  \"regulation_requires\": \"A firm must require multi-factor authentication for all remote access to its systems and for all privileged accounts.\",\n  \"verdict\": \"MEETS\"\n}"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 8305
+   },
+   "regulation_search {\"columns\": [\"CLAUSE_ID\", \"REGULATION_TITLE\", \"HEADING\", \"TEXT\"], \"limit\": 4, \"query\": \"How often must privileged access be recertified, and what does our access standard say?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 13,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "[{\"HEADING\":\"Privileged access recertification\",\"@scores\":{\"text_match\":0.10157753,\"cosine_similarity\":0.7268883,\"reranker_score\":0.68832606},\"TEXT\":\"A firm must recertify privileged access rights at least quarterly.\",\"CLAUSE_ID\":\"NFCA-R02 §3.6\",\"REGULATION_TITLE\":\"Cybersecurity Requirements\"},{\"HEADING\":\"Privileged access recertification: evidence\",\"@scores\":{\"text_match\":0.092610724,\"cosine_similarity\":0.6408055,\"reranker_score\":-4.2812433},\"TEXT\":\"A firm must keep evidence that it meets clause 3.6 and make that evidence available to the Authority on request.\",\"CLAUSE_ID\":\"NFCA-R02 §3.11\",\"REGULATION_TITLE\":\"Cybersecurity Requirements\"},{\"HEADING\":\"High-risk customer due diligence refresh\",\"@scores\":{\"text_match\":1.0580048E-7,\"cosine_similarity\":0.37199438,\"reranker_score\":-8.817602},\"TEXT\":\"A firm must refresh customer due diligence for high-risk customers at least annually.\",\"CLAUSE_ID\":\"NFCA-R06 §2.4\",\"REGULATION_TITLE\":\"Anti-Money Laundering Program Rule\"},{\"HEADING\":\"Multi-factor authentication coverage\",\"@scores\":{\"text_match\":0.01419596,\"cosine_similarity\":0.37631893,\"reranker_score\":-9.171839},\"TEXT\":\"A firm must require multi-factor authentication for all remote access to its systems and for all privileged accounts.\",\"CLAUSE_ID\":\"NFCA-R02 §3.4\",\"REGULATION_TITLE\":\"Cybersecurity Requirements\"}]"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 442
+   },
+   "policy_search {\"columns\": [\"SECTION_ID\", \"POLICY_TITLE\", \"HEADING\", \"TEXT\", \"OWNER\"], \"limit\": 4, \"query\": \"How often must privileged access be recertified, and what does our access standard say?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 14,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "[{\"HEADING\":\"Privileged access recertification\",\"OWNER\":\"Chief Information Security Officer\",\"@scores\":{\"text_match\":0.056224834,\"cosine_similarity\":0.7059307,\"reranker_score\":1.348731},\"POLICY_TITLE\":\"Identity and Access Management Standard\",\"TEXT\":\"System owners recertify privileged access rights semi-annually.\",\"SECTION_ID\":\"POL-05 §4\"},{\"HEADING\":\"Review\",\"OWNER\":\"Chief Information Security Officer\",\"@scores\":{\"text_match\":0.016855046,\"cosine_similarity\":0.41293156,\"reranker_score\":-6.830856},\"POLICY_TITLE\":\"Identity and Access Management Standard\",\"TEXT\":\"The Chief Information Security Officer reviews this policy at least annually and after any material regulatory change.\",\"SECTION_ID\":\"POL-05 §9\"},{\"HEADING\":\"High-risk customer due diligence refresh\",\"OWNER\":\"Money Laundering Reporting Officer\",\"@scores\":{\"text_match\":1.2454531E-7,\"cosine_similarity\":0.44441104,\"reranker_score\":-8.273119},\"POLICY_TITLE\":\"Customer Due Diligence Standard\",\"TEXT\":\"Customer due diligence for high-risk customers is refreshed every 12 months.\",\"SECTION_ID\":\"POL-10 §3\"},{\"HEADING\":\"Multi-factor authentication coverage\",\"OWNER\":\"Chief Information Security Officer\",\"@scores\":{\"text_match\":0.03271679,\"cosine_similarity\":0.4185362,\"reranker_score\":-7.9835396},\"POLICY_TITLE\":\"Identity and Access Management Standard\",\"TEXT\":\"Multi-factor authentication is mandatory for all remote access and for every privileged account.\",\"SECTION_ID\":\"POL-05 §3\"}]"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 756
+   },
+   "assess_gap {\"clause_ref\": \"NFCA-R02 §3.6\", \"section_ref\": \"POL-05 §4\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 15,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "{\n  \"explanation\": \"The REGULATION NFCA-R02 §3.6 requires recertification of privileged access rights at least quarterly, which means every 3 months. The POLICY POL-05 §4 requires recertification semi-annually, which means every 6 months. Since the policy recertifies less frequently than the regulation, it is weaker.\",\n  \"policy_says\": \"semi-annually\",\n  \"regulation_requires\": \"at least quarterly\",\n  \"verdict\": \"GAP\"\n}"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 13309
+   },
+   "open_remediation_ticket {\"clause_id\": \"NFCA-R02 §3.6\", \"section_id\": \"POL-05 §4\", \"severity\": \"HIGH\", \"summary\": \"Identity and Access Management Standard POL-05 §4 falls short of NFCA-R02 §3.6, which requires at least quarterly. Update the policy and its control to match.\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 16,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "Opened REM-261118-6359 (HIGH) for POL-05 §4 against NFCA-R02 §3.6"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 7620
+   },
+   "regulation_search {\"columns\": [\"CLAUSE_ID\", \"REGULATION_TITLE\", \"HEADING\", \"TEXT\"], \"limit\": 4, \"query\": \"How quickly must we acknowledge a customer complaint, and does our procedure meet that?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 17,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "[{\"HEADING\":\"Complaint acknowledgement timeliness\",\"@scores\":{\"text_match\":0.07417421,\"cosine_similarity\":0.66909933,\"reranker_score\":0.7175695},\"TEXT\":\"A firm must acknowledge a customer complaint in writing within five business days of receipt.\",\"CLAUSE_ID\":\"NFCA-R05 §2.1\",\"REGULATION_TITLE\":\"Complaints Handling Rule\"},{\"HEADING\":\"Complaint final response within eight weeks\",\"@scores\":{\"text_match\":0.024835352,\"cosine_similarity\":0.5405423,\"reranker_score\":-3.3942533},\"TEXT\":\"A firm must send a final response to a complaint within eight weeks of receipt.\",\"CLAUSE_ID\":\"NFCA-R05 §2.3\",\"REGULATION_TITLE\":\"Complaints Handling Rule\"},{\"HEADING\":\"Complaint final response within eight weeks: evidence\",\"@scores\":{\"text_match\":0.01950932,\"cosine_similarity\":0.4994892,\"reranker_score\":-5.0189166},\"TEXT\":\"A firm must keep evidence that it meets clause 2.3 and make that evidence available to the Authority on request.\",\"REGULATION_TITLE\":\"Complaints Handling Rule\",\"CLAUSE_ID\":\"NFCA-R05 §2.8\"},{\"HEADING\":\"Complaint acknowledgement timeliness: evidence\",\"@scores\":{\"text_match\":0.022919983,\"cosine_similarity\":0.49312824,\"reranker_score\":-4.943637},\"TEXT\":\"A firm must keep evidence that it meets clause 2.1 and make that evidence available to the Authority on request.\",\"CLAUSE_ID\":\"NFCA-R05 §2.6\",\"REGULATION_TITLE\":\"Complaints Handling Rule\"}]"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 513
+   },
+   "policy_search {\"columns\": [\"SECTION_ID\", \"POLICY_TITLE\", \"HEADING\", \"TEXT\", \"OWNER\"], \"limit\": 4, \"query\": \"How quickly must we acknowledge a customer complaint, and does our procedure meet that?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 18,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "[{\"HEADING\":\"Complaint acknowledgement timeliness\",\"OWNER\":\"Head of Customer Experience\",\"@scores\":{\"text_match\":0.04019533,\"cosine_similarity\":0.607914,\"reranker_score\":-1.1355748},\"POLICY_TITLE\":\"Complaints Handling Procedure\",\"TEXT\":\"Complaints are acknowledged in writing within 10 business days of receipt.\",\"SECTION_ID\":\"POL-16 §3\"},{\"HEADING\":\"Complaint final response within eight weeks\",\"OWNER\":\"Head of Customer Experience\",\"@scores\":{\"text_match\":0.03731174,\"cosine_similarity\":0.5419819,\"reranker_score\":-4.1501865},\"POLICY_TITLE\":\"Complaints Handling Procedure\",\"TEXT\":\"A final response is issued within eight weeks of receiving a complaint.\",\"SECTION_ID\":\"POL-16 §4\"},{\"HEADING\":\"Review\",\"OWNER\":\"Head of Customer Experience\",\"@scores\":{\"text_match\":0.02100727,\"cosine_similarity\":0.47449064,\"reranker_score\":-7.4892235},\"POLICY_TITLE\":\"Complaints Handling Procedure\",\"TEXT\":\"The Head of Customer Experience reviews this policy at least annually and after any material regulatory change.\",\"SECTION_ID\":\"POL-16 §9\"},{\"HEADING\":\"Purpose\",\"OWNER\":\"Head of Customer Experience\",\"@scores\":{\"text_match\":0.03383803,\"cosine_similarity\":0.4561414,\"reranker_score\":-7.4387975},\"POLICY_TITLE\":\"Complaints Handling Procedure\",\"TEXT\":\"This policy describes how Harborline Bank (fictional) meets its obligations for the receipt, handling and resolution of customer complaints.\",\"SECTION_ID\":\"POL-16 §1\"}]"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 477
+   },
+   "assess_gap {\"clause_ref\": \"NFCA-R05 §2.1\", \"section_ref\": \"POL-16 §3\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 19,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "{\n  \"explanation\": \"The regulation requires a written acknowledgement of a customer complaint within 5 business days, while the policy allows for acknowledgement within 10 business days. Since 10 business days is longer than 5 business days, the policy is weaker than the regulation.\",\n  \"policy_says\": \"10 business days\",\n  \"regulation_requires\": \"5 business days\",\n  \"verdict\": \"GAP\"\n}"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 7446
+   },
+   "open_remediation_ticket {\"clause_id\": \"NFCA-R05 §2.1\", \"section_id\": \"POL-16 §3\", \"severity\": \"HIGH\", \"summary\": \"Complaints Handling Procedure POL-16 §3 falls short of NFCA-R05 §2.1, which requires 5 business days. Update the policy and its control to match.\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 20,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "Opened REM-261118-0086 (HIGH) for POL-16 §3 against NFCA-R05 §2.1"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 7078
+   },
+   "regulation_search {\"columns\": [\"CLAUSE_ID\", \"REGULATION_TITLE\", \"HEADING\", \"TEXT\"], \"limit\": 4, \"query\": \"Are critical vendors reviewed as often as the third-party risk rule requires?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 21,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "[{\"HEADING\":\"Critical vendor periodic risk review\",\"@scores\":{\"text_match\":0.028260756,\"cosine_similarity\":0.7360902,\"reranker_score\":3.1741242},\"TEXT\":\"A firm must review the risk of each critical third-party service provider at least annually.\",\"REGULATION_TITLE\":\"Third-Party Risk Rule\",\"CLAUSE_ID\":\"NFCA-R04 §3.3\"},{\"HEADING\":\"Critical vendor periodic risk review: evidence\",\"@scores\":{\"text_match\":0.019074338,\"cosine_similarity\":0.64770615,\"reranker_score\":1.6673838},\"TEXT\":\"A firm must keep evidence that it meets clause 3.3 and make that evidence available to the Authority on request.\",\"REGULATION_TITLE\":\"Third-Party Risk Rule\",\"CLAUSE_ID\":\"NFCA-R04 §3.8\"},{\"HEADING\":\"Critical vendor exit plans\",\"@scores\":{\"text_match\":0.021502757,\"cosine_similarity\":0.59586155,\"reranker_score\":-0.5379747},\"TEXT\":\"A firm must maintain a tested exit plan for each critical third-party service provider.\",\"CLAUSE_ID\":\"NFCA-R04 §4.1\",\"REGULATION_TITLE\":\"Third-Party Risk Rule\"},{\"HEADING\":\"Critical vendor exit plans: evidence\",\"@scores\":{\"text_match\":0.017181136,\"cosine_similarity\":0.55359113,\"reranker_score\":-2.3610663},\"TEXT\":\"A firm must keep evidence that it meets clause 4.1 and make that evidence available to the Authority on request.\",\"CLAUSE_ID\":\"NFCA-R04 §4.6\",\"REGULATION_TITLE\":\"Third-Party Risk Rule\"}]"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 590
+   },
+   "policy_search {\"columns\": [\"SECTION_ID\", \"POLICY_TITLE\", \"HEADING\", \"TEXT\", \"OWNER\"], \"limit\": 4, \"query\": \"Are critical vendors reviewed as often as the third-party risk rule requires?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 22,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "[{\"HEADING\":\"Critical vendor periodic risk review\",\"OWNER\":\"Chief Procurement Officer\",\"@scores\":{\"text_match\":0.124771014,\"cosine_similarity\":0.73024523,\"reranker_score\":2.5256286},\"POLICY_TITLE\":\"Third-Party Risk Management Standard\",\"TEXT\":\"Critical vendors receive a full risk review every 24 months.\",\"SECTION_ID\":\"POL-14 §4\"},{\"HEADING\":\"Critical vendor exit plans\",\"OWNER\":\"Chief Procurement Officer\",\"@scores\":{\"text_match\":0.123530686,\"cosine_similarity\":0.60991734,\"reranker_score\":-0.18777508},\"POLICY_TITLE\":\"Third-Party Risk Management Standard\",\"TEXT\":\"Each critical vendor has an exit plan that is tested at least every two years.\",\"SECTION_ID\":\"POL-14 §5\"},{\"HEADING\":\"Review\",\"OWNER\":\"Chief Procurement Officer\",\"@scores\":{\"text_match\":0.06907925,\"cosine_similarity\":0.55660576,\"reranker_score\":-4.2941284},\"POLICY_TITLE\":\"Third-Party Risk Management Standard\",\"TEXT\":\"The Chief Procurement Officer reviews this policy at least annually and after any material regulatory change.\",\"SECTION_ID\":\"POL-14 §9\"},{\"HEADING\":\"Pre-contract vendor due diligence\",\"OWNER\":\"Chief Procurement Officer\",\"@scores\":{\"text_match\":0.08703851,\"cosine_similarity\":0.4507203,\"reranker_score\":-5.751773},\"POLICY_TITLE\":\"Third-Party Risk Management Standard\",\"TEXT\":\"Due diligence is completed and approved before any third-party contract is signed.\",\"SECTION_ID\":\"POL-14 §3\"}]"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 950
+   },
+   "assess_gap {\"clause_ref\": \"NFCA-R04 §3.3\", \"section_ref\": \"POL-14 §4\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 23,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "{\n  \"explanation\": \"The regulation requires a review of critical third-party service providers at least annually, which means every 12 months. The policy states that critical vendors receive a full risk review every 24 months, which is equivalent to every 2 years. Since 24 months is longer than 12 months, the policy is weaker than the regulation.\",\n  \"policy_says\": \"every 24 months\",\n  \"regulation_requires\": \"at least annually\",\n  \"verdict\": \"GAP\"\n}"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 8858
+   },
+   "open_remediation_ticket {\"clause_id\": \"NFCA-R04 §3.3\", \"section_id\": \"POL-14 §4\", \"severity\": \"HIGH\", \"summary\": \"Third-Party Risk Management Standard POL-14 §4 falls short of NFCA-R04 §3.3, which requires at least annually. Update the policy and its control to match.\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 24,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "Opened REM-261118-9494 (HIGH) for POL-14 §4 against NFCA-R04 §3.3"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 14308
+   },
+   "control_testing_analyst {\"message\": \"What is the control test failure rate by business unit in 2026-Q3?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 25,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "[{\"text\":\"This is our interpretation of your question:\\n\\nWhat is the control test failure rate (share of tests that failed) by business unit for calendar quarter 2026-Q3?\"},{\"statement\":\"SELECT *\\nFROM SEMANTIC_VIEW(\\n  REGQA_DEMO_DB.DESK.CONTROL_TESTS_SV\\n  METRICS failure_rate\\n  DIMENSIONS business_unit\\n  WHERE quarter = '2026-Q3'\\n)\\n -- Generated by Cortex Analyst (request_id: 93b0e2d1-014e-402f-82ad-a1b70c758b64)\\n;\",\"confidence\":{}}]"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 8138
+   },
+   "control_testing_analyst {\"message\": \"Which 5 controls failed most often across all quarters, and how many failures did each have?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 26,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "[{\"text\":\"This is our interpretation of your question:\\n\\nWhich 5 controls had the highest number of failed tests across all quarters in the entire available time period, and how many failures did each control have?\"},{\"statement\":\"SELECT *\\nFROM SEMANTIC_VIEW(\\n  REGQA_DEMO_DB.DESK.CONTROL_TESTS_SV\\n  METRICS failed_tests\\n  DIMENSIONS controls.control_name\\n)\\nORDER BY failed_tests DESC NULLS LAST\\nLIMIT 5\\n -- Generated by Cortex Analyst (request_id: 29581351-0bb8-4926-af02-9b0e0a6cc5b7)\\n;\",\"confidence\":{}}]"
+       }
+      ],
+      "isError": false
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 10403
+   }
+  },
+  "REGQA_AUDITOR": {
+   "regulation_search {\"columns\": [\"CLAUSE_ID\", \"REGULATION_TITLE\", \"HEADING\", \"TEXT\"], \"limit\": 4, \"query\": \"How quickly must we notify the regulator of a major incident, and does our policy meet it?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 2,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "MCP error calling tool regulation_search: Error occurred while calling Cortex Search Service: Cortex Search Service REGQA_DEMO_DB.DESK.REG_SEARCH does not exist or access is not authorized for the current role. If you are using JWT authentication, the role will be the \"DEFAULT_ROLE\" of the current user\nrequest-id: <redacted>"
+       }
+      ],
+      "isError": true
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 377
+   },
+   "policy_search {\"columns\": [\"SECTION_ID\", \"POLICY_TITLE\", \"HEADING\", \"TEXT\", \"OWNER\"], \"limit\": 4, \"query\": \"How quickly must we notify the regulator of a major incident, and does our policy meet it?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 3,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "MCP error calling tool policy_search: Error occurred while calling Cortex Search Service: Cortex Search Service REGQA_DEMO_DB.DESK.POLICY_SEARCH does not exist or access is not authorized for the current role. If you are using JWT authentication, the role will be the \"DEFAULT_ROLE\" of the current user\nrequest-id: <redacted>"
+       }
+      ],
+      "isError": true
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 467
+   },
+   "regulation_search {\"columns\": [\"CLAUSE_ID\", \"REGULATION_TITLE\", \"HEADING\", \"TEXT\"], \"limit\": 4, \"query\": \"How long must we keep customer transaction records, and does our records policy comply?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 4,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "MCP error calling tool regulation_search: Error occurred while calling Cortex Search Service: Cortex Search Service REGQA_DEMO_DB.DESK.REG_SEARCH does not exist or access is not authorized for the current role. If you are using JWT authentication, the role will be the \"DEFAULT_ROLE\" of the current user\nrequest-id: <redacted>"
+       }
+      ],
+      "isError": true
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 566
+   },
+   "policy_search {\"columns\": [\"SECTION_ID\", \"POLICY_TITLE\", \"HEADING\", \"TEXT\", \"OWNER\"], \"limit\": 4, \"query\": \"How long must we keep customer transaction records, and does our records policy comply?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 5,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "MCP error calling tool policy_search: Error occurred while calling Cortex Search Service: Cortex Search Service REGQA_DEMO_DB.DESK.POLICY_SEARCH does not exist or access is not authorized for the current role. If you are using JWT authentication, the role will be the \"DEFAULT_ROLE\" of the current user\nrequest-id: <redacted>"
+       }
+      ],
+      "isError": true
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 400
+   },
+   "regulation_search {\"columns\": [\"CLAUSE_ID\", \"REGULATION_TITLE\", \"HEADING\", \"TEXT\"], \"limit\": 4, \"query\": \"Do we require multi-factor authentication for remote access, as the cybersecurity rule requires?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 6,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "MCP error calling tool regulation_search: Error occurred while calling Cortex Search Service: Cortex Search Service REGQA_DEMO_DB.DESK.REG_SEARCH does not exist or access is not authorized for the current role. If you are using JWT authentication, the role will be the \"DEFAULT_ROLE\" of the current user\nrequest-id: <redacted>"
+       }
+      ],
+      "isError": true
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 465
+   },
+   "policy_search {\"columns\": [\"SECTION_ID\", \"POLICY_TITLE\", \"HEADING\", \"TEXT\", \"OWNER\"], \"limit\": 4, \"query\": \"Do we require multi-factor authentication for remote access, as the cybersecurity rule requires?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 7,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "MCP error calling tool policy_search: Error occurred while calling Cortex Search Service: Cortex Search Service REGQA_DEMO_DB.DESK.POLICY_SEARCH does not exist or access is not authorized for the current role. If you are using JWT authentication, the role will be the \"DEFAULT_ROLE\" of the current user\nrequest-id: <redacted>"
+       }
+      ],
+      "isError": true
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 566
+   },
+   "regulation_search {\"columns\": [\"CLAUSE_ID\", \"REGULATION_TITLE\", \"HEADING\", \"TEXT\"], \"limit\": 4, \"query\": \"How often must privileged access be recertified, and what does our access standard say?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 8,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "MCP error calling tool regulation_search: Error occurred while calling Cortex Search Service: Cortex Search Service REGQA_DEMO_DB.DESK.REG_SEARCH does not exist or access is not authorized for the current role. If you are using JWT authentication, the role will be the \"DEFAULT_ROLE\" of the current user\nrequest-id: <redacted>"
+       }
+      ],
+      "isError": true
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 399
+   },
+   "policy_search {\"columns\": [\"SECTION_ID\", \"POLICY_TITLE\", \"HEADING\", \"TEXT\", \"OWNER\"], \"limit\": 4, \"query\": \"How often must privileged access be recertified, and what does our access standard say?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 9,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "MCP error calling tool policy_search: Error occurred while calling Cortex Search Service: Cortex Search Service REGQA_DEMO_DB.DESK.POLICY_SEARCH does not exist or access is not authorized for the current role. If you are using JWT authentication, the role will be the \"DEFAULT_ROLE\" of the current user\nrequest-id: <redacted>"
+       }
+      ],
+      "isError": true
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 716
+   },
+   "regulation_search {\"columns\": [\"CLAUSE_ID\", \"REGULATION_TITLE\", \"HEADING\", \"TEXT\"], \"limit\": 4, \"query\": \"How quickly must we acknowledge a customer complaint, and does our procedure meet that?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 10,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "MCP error calling tool regulation_search: Error occurred while calling Cortex Search Service: Cortex Search Service REGQA_DEMO_DB.DESK.REG_SEARCH does not exist or access is not authorized for the current role. If you are using JWT authentication, the role will be the \"DEFAULT_ROLE\" of the current user\nrequest-id: <redacted>"
+       }
+      ],
+      "isError": true
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 691
+   },
+   "policy_search {\"columns\": [\"SECTION_ID\", \"POLICY_TITLE\", \"HEADING\", \"TEXT\", \"OWNER\"], \"limit\": 4, \"query\": \"How quickly must we acknowledge a customer complaint, and does our procedure meet that?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 11,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "MCP error calling tool policy_search: Error occurred while calling Cortex Search Service: Cortex Search Service REGQA_DEMO_DB.DESK.POLICY_SEARCH does not exist or access is not authorized for the current role. If you are using JWT authentication, the role will be the \"DEFAULT_ROLE\" of the current user\nrequest-id: <redacted>"
+       }
+      ],
+      "isError": true
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 665
+   },
+   "regulation_search {\"columns\": [\"CLAUSE_ID\", \"REGULATION_TITLE\", \"HEADING\", \"TEXT\"], \"limit\": 4, \"query\": \"Are critical vendors reviewed as often as the third-party risk rule requires?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 12,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "MCP error calling tool regulation_search: Error occurred while calling Cortex Search Service: Cortex Search Service REGQA_DEMO_DB.DESK.REG_SEARCH does not exist or access is not authorized for the current role. If you are using JWT authentication, the role will be the \"DEFAULT_ROLE\" of the current user\nrequest-id: <redacted>"
+       }
+      ],
+      "isError": true
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 379
+   },
+   "policy_search {\"columns\": [\"SECTION_ID\", \"POLICY_TITLE\", \"HEADING\", \"TEXT\", \"OWNER\"], \"limit\": 4, \"query\": \"Are critical vendors reviewed as often as the third-party risk rule requires?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 13,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "MCP error calling tool policy_search: Error occurred while calling Cortex Search Service: Cortex Search Service REGQA_DEMO_DB.DESK.POLICY_SEARCH does not exist or access is not authorized for the current role. If you are using JWT authentication, the role will be the \"DEFAULT_ROLE\" of the current user\nrequest-id: <redacted>"
+       }
+      ],
+      "isError": true
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 346
+   },
+   "control_testing_analyst {\"message\": \"What is the control test failure rate by business unit in 2026-Q3?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 14,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "MCP error calling tool control_testing_analyst: Error occurred while calling Cortex Analyst: SQL compilation error:\nSemantic View 'REGQA_DEMO_DB.DESK.CONTROL_TESTS_SV' does not exist or not authorized. Your primary role REGQA_AUDITOR must have at least one privilege granted on SEMANTIC VIEW REGQA_DEMO_DB.DESK.CONTROL_TESTS_SV.\nrequest-id: <redacted>"
+       }
+      ],
+      "isError": true
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 618
+   },
+   "control_testing_analyst {\"message\": \"Which 5 controls failed most often across all quarters, and how many failures did each have?\"}": {
+    "response": {
+     "jsonrpc": "2.0",
+     "id": 15,
+     "result": {
+      "content": [
+       {
+        "type": "text",
+        "text": "MCP error calling tool control_testing_analyst: Error occurred while calling Cortex Analyst: SQL compilation error:\nSemantic View 'REGQA_DEMO_DB.DESK.CONTROL_TESTS_SV' does not exist or not authorized. Your primary role REGQA_AUDITOR must have at least one privilege granted on SEMANTIC VIEW REGQA_DEMO_DB.DESK.CONTROL_TESTS_SV.\nrequest-id: <redacted>"
+       }
+      ],
+      "isError": true
+     }
+    },
+    "http": 200,
+    "content_type": "text/event-stream",
+    "ms": 1479
+   }
+  }
+ },
+ "tools_list": {
+  "REGQA_ANALYST": {
+   "response": {
+    "jsonrpc": "2.0",
+    "id": 2,
+    "result": {
+     "tools": [
+      {
+       "name": "regulation_search",
+       "description": "Searches the clauses of the regulations the bank must follow. Returns CLAUSE_ID, REGULATION_TITLE, HEADING and TEXT.",
+       "title": "Regulation search",
+       "inputSchema": {
+        "type": "object",
+        "description": "A search query and additional parameters for search.\nSpecify exactly one of 'query' or 'multi_index_query'. Omit both only for a filter-only search.\n",
+        "properties": {
+         "query": {
+          "description": "Unstructured text query. Exactly one of 'query' or 'multi_index_query' must be specified.\nOn a multi-index service, this query is applied to every indexed column. It cannot be used\nwhen the service contains a vector index with user-provided embeddings. Prefer\nmulti_index_query to search specific indexes and limit query cost.\n",
+          "type": "string"
+         },
+         "multi_index_query": {
+          "description": "Map from indexed column name to the queries to run on that column.\nExactly one of 'query' or 'multi_index_query' must be specified.\nEach value is a non-empty array of query objects, and a column may have more than one query.\nEach query object sets exactly one of:\n  - text: a string query. Use for a text index, a managed vector index, or a user-provided\n    vector column created with a query_model for automatic embeddings.\n  - vector: an array of numbers. Use for a managed vector index or a user-provided\n    embedding column.\nInclude at least one vector index. A row is returned only when it matches every queried\nfield (AND across fields). Within a text field, any query term may match (OR across terms).\nExample:\n  {\n    \"name\": [{\"text\": \"sparkle\"}],\n    \"description\": [{\"text\": \"clothing washing\"}, {\"vector\": [0.1, 0.2]}]\n  }\n",
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+           "type": "array",
+           "minItems": 1,
+           "description": "Queries to run against this indexed column.",
+           "items": {
+            "type": "object",
+            "description": "One query against this index. Set exactly one of text or vector.",
+            "additionalProperties": false,
+            "properties": {
+             "text": {
+              "description": "Text query against this index.",
+              "type": "string",
+              "minLength": 1
+             },
+             "vector": {
+              "description": "Embedding vector query against this index.",
+              "type": "array",
+              "minItems": 1,
+              "items": {
+               "type": "number"
+              }
+             }
+            }
+           }
+          }
+         },
+         "columns": {
+          "description": "List of columns to return.",
+          "type": "array",
+          "items": {
+           "type": "string"
+          }
+         },
+         "filter": {
+          "description": "Filter query. Cortex Search supports filtering on the ATTRIBUTES columns specified in the CREATE CORTEX SEARCH SERVICE command.\nCortex Search supports four matching operators:\n1. TEXT or NUMERIC equality: @eq\n2. ARRAY contains: @contains\n3. NUMERIC or DATE/TIMESTAMP greater than or equal to: @gte\n4. NUMERIC or DATE/TIMESTAMP less than or equal to: @lte\nThese matching operators can be composed with various logical operators:\n- @and\n- @or\n- @not\nThe following usage notes apply:\n  Matching against NaN ('not a number') values in the source query are handled as\n  described in Special values. Fixed-point numeric values with more than 19 digits (not\n  including leading zeroes) do not work with @eq, @gte, or @lte and will not be returned\n  by these operators (although they could still be returned by the overall query with the\n  use of @not).\nTIMESTAMP and DATE filters accept values of the form: YYYY-MM-DD and, for timezone\naware dates: YYYY-MM-DD+HH:MM. If the timezone offset is not specified, the date is interpreted in UTC.\nThese operators can be combined into a single filter object.\nExample:\nFiltering on rows where NUMERIC column numeric_col is between 10.5 and 12.5 (inclusive):\n  { \"@and\": [\n    { \"@gte\": { \"numeric_col\": 10.5 } },\n    { \"@lte\": { \"numeric_col\": 12.5 } }\n  ]}\n",
+          "type": "object"
+         },
+         "limit": {
+          "description": "Max number of results to return.",
+          "type": "integer",
+          "default": 10
+         }
+        }
+       },
+       "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+       }
+      },
+      {
+       "name": "policy_search",
+       "description": "Searches the sections of the bank's internal policies. Returns SECTION_ID, POLICY_TITLE, HEADING, TEXT and OWNER.",
+       "title": "Policy search",
+       "inputSchema": {
+        "type": "object",
+        "description": "A search query and additional parameters for search.\nSpecify exactly one of 'query' or 'multi_index_query'. Omit both only for a filter-only search.\n",
+        "properties": {
+         "query": {
+          "description": "Unstructured text query. Exactly one of 'query' or 'multi_index_query' must be specified.\nOn a multi-index service, this query is applied to every indexed column. It cannot be used\nwhen the service contains a vector index with user-provided embeddings. Prefer\nmulti_index_query to search specific indexes and limit query cost.\n",
+          "type": "string"
+         },
+         "multi_index_query": {
+          "description": "Map from indexed column name to the queries to run on that column.\nExactly one of 'query' or 'multi_index_query' must be specified.\nEach value is a non-empty array of query objects, and a column may have more than one query.\nEach query object sets exactly one of:\n  - text: a string query. Use for a text index, a managed vector index, or a user-provided\n    vector column created with a query_model for automatic embeddings.\n  - vector: an array of numbers. Use for a managed vector index or a user-provided\n    embedding column.\nInclude at least one vector index. A row is returned only when it matches every queried\nfield (AND across fields). Within a text field, any query term may match (OR across terms).\nExample:\n  {\n    \"name\": [{\"text\": \"sparkle\"}],\n    \"description\": [{\"text\": \"clothing washing\"}, {\"vector\": [0.1, 0.2]}]\n  }\n",
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+           "type": "array",
+           "minItems": 1,
+           "description": "Queries to run against this indexed column.",
+           "items": {
+            "type": "object",
+            "description": "One query against this index. Set exactly one of text or vector.",
+            "additionalProperties": false,
+            "properties": {
+             "text": {
+              "description": "Text query against this index.",
+              "type": "string",
+              "minLength": 1
+             },
+             "vector": {
+              "description": "Embedding vector query against this index.",
+              "type": "array",
+              "minItems": 1,
+              "items": {
+               "type": "number"
+              }
+             }
+            }
+           }
+          }
+         },
+         "columns": {
+          "description": "List of columns to return.",
+          "type": "array",
+          "items": {
+           "type": "string"
+          }
+         },
+         "filter": {
+          "description": "Filter query. Cortex Search supports filtering on the ATTRIBUTES columns specified in the CREATE CORTEX SEARCH SERVICE command.\nCortex Search supports four matching operators:\n1. TEXT or NUMERIC equality: @eq\n2. ARRAY contains: @contains\n3. NUMERIC or DATE/TIMESTAMP greater than or equal to: @gte\n4. NUMERIC or DATE/TIMESTAMP less than or equal to: @lte\nThese matching operators can be composed with various logical operators:\n- @and\n- @or\n- @not\nThe following usage notes apply:\n  Matching against NaN ('not a number') values in the source query are handled as\n  described in Special values. Fixed-point numeric values with more than 19 digits (not\n  including leading zeroes) do not work with @eq, @gte, or @lte and will not be returned\n  by these operators (although they could still be returned by the overall query with the\n  use of @not).\nTIMESTAMP and DATE filters accept values of the form: YYYY-MM-DD and, for timezone\naware dates: YYYY-MM-DD+HH:MM. If the timezone offset is not specified, the date is interpreted in UTC.\nThese operators can be combined into a single filter object.\nExample:\nFiltering on rows where NUMERIC column numeric_col is between 10.5 and 12.5 (inclusive):\n  { \"@and\": [\n    { \"@gte\": { \"numeric_col\": 10.5 } },\n    { \"@lte\": { \"numeric_col\": 12.5 } }\n  ]}\n",
+          "type": "object"
+         },
+         "limit": {
+          "description": "Max number of results to return.",
+          "type": "integer",
+          "default": 10
+         }
+        }
+       },
+       "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+       }
+      },
+      {
+       "name": "control_testing_analyst",
+       "description": "Answers questions about control test results, failures and failure rates by control, policy, business unit and quarter.",
+       "title": "Control testing analyst",
+       "inputSchema": {
+        "type": "object",
+        "description": "A message and additional parameters for Cortex Analyst.",
+        "properties": {
+         "message": {
+          "description": "The user’s question.",
+          "type": "string"
+         }
+        },
+        "required": [
+         "message"
+        ]
+       },
+       "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+       }
+      },
+      {
+       "name": "assess_gap",
+       "description": "Compares one regulation clause with one policy section and returns MEETS, GAP or NOT_RELATED with an explanation.",
+       "title": "Assess policy gap",
+       "inputSchema": {
+        "type": "object",
+        "properties": {
+         "clause_ref": {
+          "type": "string",
+          "description": "Regulation clause id, for example 'NFCA-R01 §4.2'"
+         },
+         "section_ref": {
+          "type": "string",
+          "description": "Policy section id, for example 'POL-07 §4'"
+         }
+        }
+       },
+       "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+       }
+      },
+      {
+       "name": "open_remediation_ticket",
+       "description": "Opens a remediation ticket for a policy section that falls short of a regulation clause. Writes a row; ask a person to approve first.",
+       "title": "Open remediation ticket",
+       "inputSchema": {
+        "type": "object",
+        "properties": {
+         "section_id": {
+          "type": "string",
+          "description": "Policy section id"
+         },
+         "clause_id": {
+          "type": "string",
+          "description": "Regulation clause id"
+         },
+         "severity": {
+          "type": "string",
+          "description": "HIGH, MEDIUM or LOW"
+         },
+         "summary": {
+          "type": "string",
+          "description": "One or two sentences describing the gap and the fix"
+         }
+        }
+       },
+       "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+       }
+      }
+     ]
+    }
+   },
+   "http": 200,
+   "content_type": "application/json",
+   "ms": 368
+  },
+  "REGQA_COMPLIANCE_LEAD": {
+   "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+     "tools": [
+      {
+       "name": "regulation_search",
+       "description": "Searches the clauses of the regulations the bank must follow. Returns CLAUSE_ID, REGULATION_TITLE, HEADING and TEXT.",
+       "title": "Regulation search",
+       "inputSchema": {
+        "type": "object",
+        "description": "A search query and additional parameters for search.\nSpecify exactly one of 'query' or 'multi_index_query'. Omit both only for a filter-only search.\n",
+        "properties": {
+         "query": {
+          "description": "Unstructured text query. Exactly one of 'query' or 'multi_index_query' must be specified.\nOn a multi-index service, this query is applied to every indexed column. It cannot be used\nwhen the service contains a vector index with user-provided embeddings. Prefer\nmulti_index_query to search specific indexes and limit query cost.\n",
+          "type": "string"
+         },
+         "multi_index_query": {
+          "description": "Map from indexed column name to the queries to run on that column.\nExactly one of 'query' or 'multi_index_query' must be specified.\nEach value is a non-empty array of query objects, and a column may have more than one query.\nEach query object sets exactly one of:\n  - text: a string query. Use for a text index, a managed vector index, or a user-provided\n    vector column created with a query_model for automatic embeddings.\n  - vector: an array of numbers. Use for a managed vector index or a user-provided\n    embedding column.\nInclude at least one vector index. A row is returned only when it matches every queried\nfield (AND across fields). Within a text field, any query term may match (OR across terms).\nExample:\n  {\n    \"name\": [{\"text\": \"sparkle\"}],\n    \"description\": [{\"text\": \"clothing washing\"}, {\"vector\": [0.1, 0.2]}]\n  }\n",
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+           "type": "array",
+           "minItems": 1,
+           "description": "Queries to run against this indexed column.",
+           "items": {
+            "type": "object",
+            "description": "One query against this index. Set exactly one of text or vector.",
+            "additionalProperties": false,
+            "properties": {
+             "text": {
+              "description": "Text query against this index.",
+              "type": "string",
+              "minLength": 1
+             },
+             "vector": {
+              "description": "Embedding vector query against this index.",
+              "type": "array",
+              "minItems": 1,
+              "items": {
+               "type": "number"
+              }
+             }
+            }
+           }
+          }
+         },
+         "columns": {
+          "description": "List of columns to return.",
+          "type": "array",
+          "items": {
+           "type": "string"
+          }
+         },
+         "filter": {
+          "description": "Filter query. Cortex Search supports filtering on the ATTRIBUTES columns specified in the CREATE CORTEX SEARCH SERVICE command.\nCortex Search supports four matching operators:\n1. TEXT or NUMERIC equality: @eq\n2. ARRAY contains: @contains\n3. NUMERIC or DATE/TIMESTAMP greater than or equal to: @gte\n4. NUMERIC or DATE/TIMESTAMP less than or equal to: @lte\nThese matching operators can be composed with various logical operators:\n- @and\n- @or\n- @not\nThe following usage notes apply:\n  Matching against NaN ('not a number') values in the source query are handled as\n  described in Special values. Fixed-point numeric values with more than 19 digits (not\n  including leading zeroes) do not work with @eq, @gte, or @lte and will not be returned\n  by these operators (although they could still be returned by the overall query with the\n  use of @not).\nTIMESTAMP and DATE filters accept values of the form: YYYY-MM-DD and, for timezone\naware dates: YYYY-MM-DD+HH:MM. If the timezone offset is not specified, the date is interpreted in UTC.\nThese operators can be combined into a single filter object.\nExample:\nFiltering on rows where NUMERIC column numeric_col is between 10.5 and 12.5 (inclusive):\n  { \"@and\": [\n    { \"@gte\": { \"numeric_col\": 10.5 } },\n    { \"@lte\": { \"numeric_col\": 12.5 } }\n  ]}\n",
+          "type": "object"
+         },
+         "limit": {
+          "description": "Max number of results to return.",
+          "type": "integer",
+          "default": 10
+         }
+        }
+       },
+       "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+       }
+      },
+      {
+       "name": "policy_search",
+       "description": "Searches the sections of the bank's internal policies. Returns SECTION_ID, POLICY_TITLE, HEADING, TEXT and OWNER.",
+       "title": "Policy search",
+       "inputSchema": {
+        "type": "object",
+        "description": "A search query and additional parameters for search.\nSpecify exactly one of 'query' or 'multi_index_query'. Omit both only for a filter-only search.\n",
+        "properties": {
+         "query": {
+          "description": "Unstructured text query. Exactly one of 'query' or 'multi_index_query' must be specified.\nOn a multi-index service, this query is applied to every indexed column. It cannot be used\nwhen the service contains a vector index with user-provided embeddings. Prefer\nmulti_index_query to search specific indexes and limit query cost.\n",
+          "type": "string"
+         },
+         "multi_index_query": {
+          "description": "Map from indexed column name to the queries to run on that column.\nExactly one of 'query' or 'multi_index_query' must be specified.\nEach value is a non-empty array of query objects, and a column may have more than one query.\nEach query object sets exactly one of:\n  - text: a string query. Use for a text index, a managed vector index, or a user-provided\n    vector column created with a query_model for automatic embeddings.\n  - vector: an array of numbers. Use for a managed vector index or a user-provided\n    embedding column.\nInclude at least one vector index. A row is returned only when it matches every queried\nfield (AND across fields). Within a text field, any query term may match (OR across terms).\nExample:\n  {\n    \"name\": [{\"text\": \"sparkle\"}],\n    \"description\": [{\"text\": \"clothing washing\"}, {\"vector\": [0.1, 0.2]}]\n  }\n",
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+           "type": "array",
+           "minItems": 1,
+           "description": "Queries to run against this indexed column.",
+           "items": {
+            "type": "object",
+            "description": "One query against this index. Set exactly one of text or vector.",
+            "additionalProperties": false,
+            "properties": {
+             "text": {
+              "description": "Text query against this index.",
+              "type": "string",
+              "minLength": 1
+             },
+             "vector": {
+              "description": "Embedding vector query against this index.",
+              "type": "array",
+              "minItems": 1,
+              "items": {
+               "type": "number"
+              }
+             }
+            }
+           }
+          }
+         },
+         "columns": {
+          "description": "List of columns to return.",
+          "type": "array",
+          "items": {
+           "type": "string"
+          }
+         },
+         "filter": {
+          "description": "Filter query. Cortex Search supports filtering on the ATTRIBUTES columns specified in the CREATE CORTEX SEARCH SERVICE command.\nCortex Search supports four matching operators:\n1. TEXT or NUMERIC equality: @eq\n2. ARRAY contains: @contains\n3. NUMERIC or DATE/TIMESTAMP greater than or equal to: @gte\n4. NUMERIC or DATE/TIMESTAMP less than or equal to: @lte\nThese matching operators can be composed with various logical operators:\n- @and\n- @or\n- @not\nThe following usage notes apply:\n  Matching against NaN ('not a number') values in the source query are handled as\n  described in Special values. Fixed-point numeric values with more than 19 digits (not\n  including leading zeroes) do not work with @eq, @gte, or @lte and will not be returned\n  by these operators (although they could still be returned by the overall query with the\n  use of @not).\nTIMESTAMP and DATE filters accept values of the form: YYYY-MM-DD and, for timezone\naware dates: YYYY-MM-DD+HH:MM. If the timezone offset is not specified, the date is interpreted in UTC.\nThese operators can be combined into a single filter object.\nExample:\nFiltering on rows where NUMERIC column numeric_col is between 10.5 and 12.5 (inclusive):\n  { \"@and\": [\n    { \"@gte\": { \"numeric_col\": 10.5 } },\n    { \"@lte\": { \"numeric_col\": 12.5 } }\n  ]}\n",
+          "type": "object"
+         },
+         "limit": {
+          "description": "Max number of results to return.",
+          "type": "integer",
+          "default": 10
+         }
+        }
+       },
+       "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+       }
+      },
+      {
+       "name": "control_testing_analyst",
+       "description": "Answers questions about control test results, failures and failure rates by control, policy, business unit and quarter.",
+       "title": "Control testing analyst",
+       "inputSchema": {
+        "type": "object",
+        "description": "A message and additional parameters for Cortex Analyst.",
+        "properties": {
+         "message": {
+          "description": "The user’s question.",
+          "type": "string"
+         }
+        },
+        "required": [
+         "message"
+        ]
+       },
+       "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+       }
+      },
+      {
+       "name": "assess_gap",
+       "description": "Compares one regulation clause with one policy section and returns MEETS, GAP or NOT_RELATED with an explanation.",
+       "title": "Assess policy gap",
+       "inputSchema": {
+        "type": "object",
+        "properties": {
+         "clause_ref": {
+          "type": "string",
+          "description": "Regulation clause id, for example 'NFCA-R01 §4.2'"
+         },
+         "section_ref": {
+          "type": "string",
+          "description": "Policy section id, for example 'POL-07 §4'"
+         }
+        }
+       },
+       "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+       }
+      },
+      {
+       "name": "open_remediation_ticket",
+       "description": "Opens a remediation ticket for a policy section that falls short of a regulation clause. Writes a row; ask a person to approve first.",
+       "title": "Open remediation ticket",
+       "inputSchema": {
+        "type": "object",
+        "properties": {
+         "section_id": {
+          "type": "string",
+          "description": "Policy section id"
+         },
+         "clause_id": {
+          "type": "string",
+          "description": "Regulation clause id"
+         },
+         "severity": {
+          "type": "string",
+          "description": "HIGH, MEDIUM or LOW"
+         },
+         "summary": {
+          "type": "string",
+          "description": "One or two sentences describing the gap and the fix"
+         }
+        }
+       },
+       "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+       }
+      }
+     ]
+    }
+   },
+   "http": 200,
+   "content_type": "application/json",
+   "ms": 625
+  },
+  "REGQA_AUDITOR": {
+   "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+     "tools": [
+      {
+       "name": "regulation_search",
+       "description": "Searches the clauses of the regulations the bank must follow. Returns CLAUSE_ID, REGULATION_TITLE, HEADING and TEXT.",
+       "title": "Regulation search",
+       "inputSchema": {
+        "type": "object",
+        "description": "A search query and additional parameters for search.\nSpecify exactly one of 'query' or 'multi_index_query'. Omit both only for a filter-only search.\n",
+        "properties": {
+         "query": {
+          "description": "Unstructured text query. Exactly one of 'query' or 'multi_index_query' must be specified.\nOn a multi-index service, this query is applied to every indexed column. It cannot be used\nwhen the service contains a vector index with user-provided embeddings. Prefer\nmulti_index_query to search specific indexes and limit query cost.\n",
+          "type": "string"
+         },
+         "multi_index_query": {
+          "description": "Map from indexed column name to the queries to run on that column.\nExactly one of 'query' or 'multi_index_query' must be specified.\nEach value is a non-empty array of query objects, and a column may have more than one query.\nEach query object sets exactly one of:\n  - text: a string query. Use for a text index, a managed vector index, or a user-provided\n    vector column created with a query_model for automatic embeddings.\n  - vector: an array of numbers. Use for a managed vector index or a user-provided\n    embedding column.\nInclude at least one vector index. A row is returned only when it matches every queried\nfield (AND across fields). Within a text field, any query term may match (OR across terms).\nExample:\n  {\n    \"name\": [{\"text\": \"sparkle\"}],\n    \"description\": [{\"text\": \"clothing washing\"}, {\"vector\": [0.1, 0.2]}]\n  }\n",
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+           "type": "array",
+           "minItems": 1,
+           "description": "Queries to run against this indexed column.",
+           "items": {
+            "type": "object",
+            "description": "One query against this index. Set exactly one of text or vector.",
+            "additionalProperties": false,
+            "properties": {
+             "text": {
+              "description": "Text query against this index.",
+              "type": "string",
+              "minLength": 1
+             },
+             "vector": {
+              "description": "Embedding vector query against this index.",
+              "type": "array",
+              "minItems": 1,
+              "items": {
+               "type": "number"
+              }
+             }
+            }
+           }
+          }
+         },
+         "columns": {
+          "description": "List of columns to return.",
+          "type": "array",
+          "items": {
+           "type": "string"
+          }
+         },
+         "filter": {
+          "description": "Filter query. Cortex Search supports filtering on the ATTRIBUTES columns specified in the CREATE CORTEX SEARCH SERVICE command.\nCortex Search supports four matching operators:\n1. TEXT or NUMERIC equality: @eq\n2. ARRAY contains: @contains\n3. NUMERIC or DATE/TIMESTAMP greater than or equal to: @gte\n4. NUMERIC or DATE/TIMESTAMP less than or equal to: @lte\nThese matching operators can be composed with various logical operators:\n- @and\n- @or\n- @not\nThe following usage notes apply:\n  Matching against NaN ('not a number') values in the source query are handled as\n  described in Special values. Fixed-point numeric values with more than 19 digits (not\n  including leading zeroes) do not work with @eq, @gte, or @lte and will not be returned\n  by these operators (although they could still be returned by the overall query with the\n  use of @not).\nTIMESTAMP and DATE filters accept values of the form: YYYY-MM-DD and, for timezone\naware dates: YYYY-MM-DD+HH:MM. If the timezone offset is not specified, the date is interpreted in UTC.\nThese operators can be combined into a single filter object.\nExample:\nFiltering on rows where NUMERIC column numeric_col is between 10.5 and 12.5 (inclusive):\n  { \"@and\": [\n    { \"@gte\": { \"numeric_col\": 10.5 } },\n    { \"@lte\": { \"numeric_col\": 12.5 } }\n  ]}\n",
+          "type": "object"
+         },
+         "limit": {
+          "description": "Max number of results to return.",
+          "type": "integer",
+          "default": 10
+         }
+        }
+       },
+       "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+       }
+      },
+      {
+       "name": "policy_search",
+       "description": "Searches the sections of the bank's internal policies. Returns SECTION_ID, POLICY_TITLE, HEADING, TEXT and OWNER.",
+       "title": "Policy search",
+       "inputSchema": {
+        "type": "object",
+        "description": "A search query and additional parameters for search.\nSpecify exactly one of 'query' or 'multi_index_query'. Omit both only for a filter-only search.\n",
+        "properties": {
+         "query": {
+          "description": "Unstructured text query. Exactly one of 'query' or 'multi_index_query' must be specified.\nOn a multi-index service, this query is applied to every indexed column. It cannot be used\nwhen the service contains a vector index with user-provided embeddings. Prefer\nmulti_index_query to search specific indexes and limit query cost.\n",
+          "type": "string"
+         },
+         "multi_index_query": {
+          "description": "Map from indexed column name to the queries to run on that column.\nExactly one of 'query' or 'multi_index_query' must be specified.\nEach value is a non-empty array of query objects, and a column may have more than one query.\nEach query object sets exactly one of:\n  - text: a string query. Use for a text index, a managed vector index, or a user-provided\n    vector column created with a query_model for automatic embeddings.\n  - vector: an array of numbers. Use for a managed vector index or a user-provided\n    embedding column.\nInclude at least one vector index. A row is returned only when it matches every queried\nfield (AND across fields). Within a text field, any query term may match (OR across terms).\nExample:\n  {\n    \"name\": [{\"text\": \"sparkle\"}],\n    \"description\": [{\"text\": \"clothing washing\"}, {\"vector\": [0.1, 0.2]}]\n  }\n",
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+           "type": "array",
+           "minItems": 1,
+           "description": "Queries to run against this indexed column.",
+           "items": {
+            "type": "object",
+            "description": "One query against this index. Set exactly one of text or vector.",
+            "additionalProperties": false,
+            "properties": {
+             "text": {
+              "description": "Text query against this index.",
+              "type": "string",
+              "minLength": 1
+             },
+             "vector": {
+              "description": "Embedding vector query against this index.",
+              "type": "array",
+              "minItems": 1,
+              "items": {
+               "type": "number"
+              }
+             }
+            }
+           }
+          }
+         },
+         "columns": {
+          "description": "List of columns to return.",
+          "type": "array",
+          "items": {
+           "type": "string"
+          }
+         },
+         "filter": {
+          "description": "Filter query. Cortex Search supports filtering on the ATTRIBUTES columns specified in the CREATE CORTEX SEARCH SERVICE command.\nCortex Search supports four matching operators:\n1. TEXT or NUMERIC equality: @eq\n2. ARRAY contains: @contains\n3. NUMERIC or DATE/TIMESTAMP greater than or equal to: @gte\n4. NUMERIC or DATE/TIMESTAMP less than or equal to: @lte\nThese matching operators can be composed with various logical operators:\n- @and\n- @or\n- @not\nThe following usage notes apply:\n  Matching against NaN ('not a number') values in the source query are handled as\n  described in Special values. Fixed-point numeric values with more than 19 digits (not\n  including leading zeroes) do not work with @eq, @gte, or @lte and will not be returned\n  by these operators (although they could still be returned by the overall query with the\n  use of @not).\nTIMESTAMP and DATE filters accept values of the form: YYYY-MM-DD and, for timezone\naware dates: YYYY-MM-DD+HH:MM. If the timezone offset is not specified, the date is interpreted in UTC.\nThese operators can be combined into a single filter object.\nExample:\nFiltering on rows where NUMERIC column numeric_col is between 10.5 and 12.5 (inclusive):\n  { \"@and\": [\n    { \"@gte\": { \"numeric_col\": 10.5 } },\n    { \"@lte\": { \"numeric_col\": 12.5 } }\n  ]}\n",
+          "type": "object"
+         },
+         "limit": {
+          "description": "Max number of results to return.",
+          "type": "integer",
+          "default": 10
+         }
+        }
+       },
+       "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+       }
+      },
+      {
+       "name": "control_testing_analyst",
+       "description": "Answers questions about control test results, failures and failure rates by control, policy, business unit and quarter.",
+       "title": "Control testing analyst",
+       "inputSchema": {
+        "type": "object",
+        "description": "A message and additional parameters for Cortex Analyst.",
+        "properties": {
+         "message": {
+          "description": "The user’s question.",
+          "type": "string"
+         }
+        },
+        "required": [
+         "message"
+        ]
+       },
+       "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+       }
+      },
+      {
+       "name": "assess_gap",
+       "description": "Compares one regulation clause with one policy section and returns MEETS, GAP or NOT_RELATED with an explanation.",
+       "title": "Assess policy gap",
+       "inputSchema": {
+        "type": "object",
+        "properties": {
+         "clause_ref": {
+          "type": "string",
+          "description": "Regulation clause id, for example 'NFCA-R01 §4.2'"
+         },
+         "section_ref": {
+          "type": "string",
+          "description": "Policy section id, for example 'POL-07 §4'"
+         }
+        }
+       },
+       "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+       }
+      },
+      {
+       "name": "open_remediation_ticket",
+       "description": "Opens a remediation ticket for a policy section that falls short of a regulation clause. Writes a row; ask a person to approve first.",
+       "title": "Open remediation ticket",
+       "inputSchema": {
+        "type": "object",
+        "properties": {
+         "section_id": {
+          "type": "string",
+          "description": "Policy section id"
+         },
+         "clause_id": {
+          "type": "string",
+          "description": "Regulation clause id"
+         },
+         "severity": {
+          "type": "string",
+          "description": "HIGH, MEDIUM or LOW"
+         },
+         "summary": {
+          "type": "string",
+          "description": "One or two sentences describing the gap and the fix"
+         }
+        }
+       },
+       "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+       }
+      }
+     ]
+    }
+   },
+   "http": 200,
+   "content_type": "application/json",
+   "ms": 411
+  }
+ },
+ "sql": {
+  "REGQA_ANALYST": {
+   "SELECT *\nFROM SEMANTIC_VIEW(\n  REGQA_DEMO_DB.DESK.CONTROL_TESTS_SV\n  METRICS failure_rate\n  DIMENSIONS business_unit\n  WHERE quarter = '2026-Q3'\n)\n -- Generated by Cortex Analyst (request_id: 084bca29-4f4b-407e-99ab-a3119cc46c01)\n;": {
+    "columns": [
+     "FAILURE_RATE",
+     "BUSINESS_UNIT"
+    ],
+    "rows": [
+     [
+      0.12,
+      "Retail Banking"
+     ],
+     [
+      0.08,
+      "Payments"
+     ]
+    ]
+   },
+   "SELECT *\nFROM SEMANTIC_VIEW(\n  REGQA_DEMO_DB.DESK.CONTROL_TESTS_SV\n  METRICS failed_tests\n  DIMENSIONS controls.control_name\n)\nORDER BY failed_tests DESC NULLS LAST\nLIMIT 5\n -- Generated by Cortex Analyst (request_id: bad42f94-3edd-40c3-a7fc-16d95c1c9307)\n;": {
+    "columns": [
+     "FAILED_TESTS",
+     "CONTROL_NAME"
+    ],
+    "rows": [
+     [
+      4,
+      "Critical vendor periodic risk review"
+     ],
+     [
+      4,
+      "Record retention period"
+     ],
+     [
+      4,
+      "Privileged access recertification"
+     ],
+     [
+      4,
+      "Complaint acknowledgement timeliness"
+     ],
+     [
+      2,
+      "Regulatory incident notification timeliness"
+     ]
+    ]
+   }
+  },
+  "REGQA_COMPLIANCE_LEAD": {
+   "SELECT *\nFROM SEMANTIC_VIEW(\n  REGQA_DEMO_DB.DESK.CONTROL_TESTS_SV\n  METRICS failure_rate\n  DIMENSIONS business_unit\n  WHERE quarter = '2026-Q3'\n)\n -- Generated by Cortex Analyst (request_id: 93b0e2d1-014e-402f-82ad-a1b70c758b64)\n;": {
+    "columns": [
+     "FAILURE_RATE",
+     "BUSINESS_UNIT"
+    ],
+    "rows": [
+     [
+      0.12,
+      "Retail Banking"
+     ],
+     [
+      0.06,
+      "Wealth Management"
+     ],
+     [
+      0.08,
+      "Payments"
+     ]
+    ]
+   },
+   "SELECT *\nFROM SEMANTIC_VIEW(\n  REGQA_DEMO_DB.DESK.CONTROL_TESTS_SV\n  METRICS failed_tests\n  DIMENSIONS controls.control_name\n)\nORDER BY failed_tests DESC NULLS LAST\nLIMIT 5\n -- Generated by Cortex Analyst (request_id: 29581351-0bb8-4926-af02-9b0e0a6cc5b7)\n;": {
+    "columns": [
+     "FAILED_TESTS",
+     "CONTROL_NAME"
+    ],
+    "rows": [
+     [
+      6,
+      "Record retention period"
+     ],
+     [
+      5,
+      "Critical vendor periodic risk review"
+     ],
+     [
+      5,
+      "Privileged access recertification"
+     ],
+     [
+      5,
+      "Complaint acknowledgement timeliness"
+     ],
+     [
+      4,
+      "Regulatory incident notification timeliness"
+     ]
+    ]
+   }
+  }
+ },
+ "url_template": "https://<account>/api/v2/databases/REGQA_DEMO_DB/schemas/DESK/mcp-servers/REGQA_MCP",
+ "initialize": {
+  "response": {
+   "jsonrpc": "2.0",
+   "id": 1,
+   "result": {
+    "protocolVersion": "2025-06-18",
+    "capabilities": {
+     "tools": {
+      "listChanged": false
+     }
+    },
+    "serverInfo": {
+     "name": "REGQA_MCP",
+     "title": "Snowflake Server: REGQA_MCP",
+     "version": "1.0.0"
+    }
+   }
+  },
+  "http": 200,
+  "content_type": "application/json",
+  "ms": 517
+ }
+}
