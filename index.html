@@ -20,6 +20,7 @@
       <ul class="nav-links" role="list">
         <li><a href="#overview">Overview</a></li>
         <li><a href="#capabilities">What you can do</a></li>
+        <li><a href="#data">The data</a></li>
         <li><a href="#walkthrough">Walkthrough</a></li>
         <li><a href="#tour">Tour</a></li>
         <li><a href="#modes">Two modes</a></li>
@@ -95,7 +96,46 @@
       </div>
     </section>
 
-    <section id="walkthrough">
+    <section id="data">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-label">The data</div>
+          <h2>What the Data Looks Like</h2>
+          <p>Six synthetic tables in <code>REGQA_DEMO_DB.DESK</code>, generated from one seed by <code>regqa/data.py</code>: a fictional regulator's rules, a fictional bank's policies, and a year of control testing. Two more tables record what happens while you use the app. The app's Overview page shows the same tables.</p>
+        </div>
+
+        <div class="cap-list reveal">
+          <div class="cap-item"><h3>REGULATIONS · 12 rows</h3><p>Rules from the Northbridge Financial Conduct Authority (fictional): operational resilience, cybersecurity, records, third-party risk, complaints, AML, sanctions, model risk, privacy, suitability, market conduct and governance.</p></div>
+          <div class="cap-item"><h3>REG_CLAUSES · 160 rows</h3><p>Each rule's clauses: boilerplate (purpose, scope, definitions), 32 concrete requirements with deadlines or frequencies, and evidence clauses. Searched by <code>regulation_search</code>.</p><span class="where">CORTEX SEARCH</span></div>
+          <div class="cap-item"><h3>POLICIES · 20 rows</h3><p>Harborline Bank's (fictional) internal policies, each with a named executive owner, a version and a review date.</p></div>
+          <div class="cap-item"><h3>POLICY_SECTIONS · 180 rows</h3><p>Each policy's sections. 32 of them implement a specific regulation clause; five of those are written to fall short. Searched by <code>policy_search</code>.</p><span class="where">CORTEX SEARCH</span></div>
+          <div class="cap-item"><h3>CONTROLS · 50 rows</h3><p>The control library. 32 controls map one regulation clause to the policy section that implements it; 18 are general controls.</p></div>
+          <div class="cap-item"><h3>CONTROL_TESTS · 600 rows</h3><p>Every control tested each quarter from 2025-Q4 to 2026-Q3 in Retail Banking, Wealth Management and Payments, with sample size, exceptions and PASS or FAIL. Queried by <code>control_testing_analyst</code> through a semantic view, and filtered by the row access policy.</p><span class="where">CORTEX ANALYST · ROW ACCESS POLICY</span></div>
+          <div class="cap-item"><h3>REMEDIATION_TICKETS</h3><p>Starts empty. <code>open_remediation_ticket</code> adds a row, with the user and role that opened it, when a person approves the call.</p><span class="where">WRITTEN BY A TOOL</span></div>
+          <div class="cap-item"><h3>MCP_AUDIT</h3><p>Starts empty. In live mode the app appends one row per MCP call: role, method, tool, arguments, status, latency and size.</p><span class="where">WRITTEN BY THE APP</span></div>
+        </div>
+
+        <h3 class="run-sub reveal">How the tables connect</h3>
+        <p class="reveal">Each regulation has clauses, and each policy has sections. A control links one clause to the section that should meet it, and each control has 12 test results (4 quarters × 3 business units). <code>assess_gap</code> reads one clause and one section by ID and asks <code>AI_COMPLETE</code> whether the section meets the clause.</p>
+
+        <h3 class="run-sub reveal">Sample rows: regulation clauses</h3>
+        <div class="reveal"><div class="compare-wrap data-sample"><table class="compare"><thead><tr><th scope="col">CLAUSE_ID</th><th scope="col">REGULATION_TITLE</th><th scope="col">TEXT</th></tr></thead><tbody><tr><td>NFCA-R01 §4.2</td><td>Operational Resilience Rule</td><td>A firm must notify the Authority of a major operational incident within 72 hours of determining that the incident is major.</td></tr><tr><td>NFCA-R02 §3.4</td><td>Cybersecurity Requirements</td><td>A firm must require multi-factor authentication for all remote access to its systems and for all privileged accounts.</td></tr><tr><td>NFCA-R03 §2.1</td><td>Records and Retention Rule</td><td>A firm must retain records of customer transactions and communications for at least seven years.</td></tr></tbody></table></div></div>
+        <h3 class="run-sub reveal">Sample rows: the policy sections that implement them</h3>
+        <div class="reveal"><div class="compare-wrap data-sample"><table class="compare"><thead><tr><th scope="col">SECTION_ID</th><th scope="col">POLICY_TITLE</th><th scope="col">TEXT</th><th scope="col">OWNER</th></tr></thead><tbody><tr><td>POL-05 §3</td><td>Identity and Access Management Standard</td><td>Multi-factor authentication is mandatory for all remote access and for every privileged account.</td><td>Chief Information Security Officer</td></tr><tr><td>POL-07 §4</td><td>Cyber Incident Response Policy</td><td>The Incident Manager notifies the regulator of a major operational incident within 7 calendar days of classification.</td><td>Head of Security Operations</td></tr><tr><td>POL-11 §3</td><td>Records Management Policy</td><td>Customer transaction and communication records are retained for five years and then deleted.</td><td>Head of Records Management</td></tr></tbody></table></div></div>
+        <p class="reveal data-note">Read them in pairs: NFCA-R01 §4.2 requires notice within 72 hours, but POL-07 §4 allows 7 calendar days (a gap). POL-05 §3 matches NFCA-R02 §3.4 on MFA (it meets it). POL-11 §3 keeps records for 5 years against the 7 years NFCA-R03 §2.1 requires (a gap).</p>
+        <h3 class="run-sub reveal">Sample rows: controls</h3>
+        <div class="reveal"><div class="compare-wrap data-sample"><table class="compare"><thead><tr><th scope="col">CONTROL_ID</th><th scope="col">CONTROL_NAME</th><th scope="col">CLAUSE_ID</th><th scope="col">SECTION_ID</th></tr></thead><tbody><tr><td>CTL-001</td><td>Regulatory incident notification timeliness</td><td>NFCA-R01 §4.2</td><td>POL-07 §4</td></tr><tr><td>CTL-004</td><td>Multi-factor authentication coverage</td><td>NFCA-R02 §3.4</td><td>POL-05 §3</td></tr><tr><td>CTL-008</td><td>Record retention period</td><td>NFCA-R03 §2.1</td><td>POL-11 §3</td></tr></tbody></table></div></div>
+        <h3 class="run-sub reveal">Sample rows: control tests</h3>
+        <div class="reveal"><div class="compare-wrap data-sample"><table class="compare"><thead><tr><th scope="col">TEST_ID</th><th scope="col">CONTROL_ID</th><th scope="col">BUSINESS_UNIT</th><th scope="col">QUARTER</th><th scope="col">SAMPLE_SIZE</th><th scope="col">EXCEPTIONS</th><th scope="col">RESULT</th></tr></thead><tbody><tr><td>T00001</td><td>CTL-001</td><td>Retail Banking</td><td>2025-Q4</td><td>10</td><td>0</td><td>PASS</td></tr><tr><td>T00002</td><td>CTL-001</td><td>Wealth Management</td><td>2025-Q4</td><td>30</td><td>0</td><td>PASS</td></tr><tr><td>T00003</td><td>CTL-001</td><td>Payments</td><td>2025-Q4</td><td>10</td><td>0</td><td>PASS</td></tr><tr><td>T00010</td><td>CTL-001</td><td>Retail Banking</td><td>2026-Q3</td><td>10</td><td>2</td><td>FAIL</td></tr><tr><td>T00011</td><td>CTL-001</td><td>Wealth Management</td><td>2026-Q3</td><td>20</td><td>3</td><td>FAIL</td></tr><tr><td>T00012</td><td>CTL-001</td><td>Payments</td><td>2026-Q3</td><td>20</td><td>0</td><td>PASS</td></tr></tbody></table></div></div>
+        <p class="reveal data-note">The incident-notification control in 2025-Q4 and 2026-Q3. Controls tied to a planted gap fail far more often than the 5% background rate, and more so over time.</p>
+
+        <h3 class="run-sub reveal">The answer key: five planted gaps</h3>
+        <div class="reveal"><div class="compare-wrap data-sample"><table class="compare"><thead><tr><th scope="col">Policy section</th><th scope="col">Regulation clause</th><th scope="col">Regulation requires</th><th scope="col">Policy says</th></tr></thead><tbody><tr><td>POL-07 §4</td><td>NFCA-R01 §4.2</td><td>A firm must notify the Authority of a major operational incident within 72 hours of determining that the incident is major.</td><td>The Incident Manager notifies the regulator of a major operational incident within 7 calendar days of classification.</td></tr><tr><td>POL-05 §4</td><td>NFCA-R02 §3.6</td><td>A firm must recertify privileged access rights at least quarterly.</td><td>System owners recertify privileged access rights semi-annually.</td></tr><tr><td>POL-11 §3</td><td>NFCA-R03 §2.1</td><td>A firm must retain records of customer transactions and communications for at least seven years.</td><td>Customer transaction and communication records are retained for five years and then deleted.</td></tr><tr><td>POL-14 §4</td><td>NFCA-R04 §3.3</td><td>A firm must review the risk of each critical third-party service provider at least annually.</td><td>Critical vendors receive a full risk review every 24 months.</td></tr><tr><td>POL-16 §3</td><td>NFCA-R05 §2.1</td><td>A firm must acknowledge a customer complaint in writing within five business days of receipt.</td><td>Complaints are acknowledged in writing within 10 business days of receipt.</td></tr></tbody></table></div></div>
+        <p class="reveal data-note">The other 27 mapped requirements are met, so a good answer has to tell the two apart. In testing, <code>assess_gap</code> returned the expected verdict for all 32 pairs plus 2 unrelated pairs.</p>
+      </div>
+    </section>
+
+    <section id="walkthrough" class="bg-alt">
       <div class="container narrow">
         <div class="section-header reveal">
           <div class="section-label">Guided walkthrough</div>
@@ -153,7 +193,7 @@
       </div>
     </section>
 
-    <section id="tour" class="bg-alt">
+    <section id="tour">
       <div class="container narrow">
         <div class="section-header reveal">
           <div class="section-label">Tour</div>
@@ -198,7 +238,7 @@
       </div>
     </section>
 
-    <section id="modes">
+    <section id="modes" class="bg-alt">
       <div class="container">
         <div class="section-header reveal">
           <div class="section-label">Two modes</div>
@@ -249,7 +289,7 @@
       </div>
     </section>
 
-    <section id="run" class="bg-alt">
+    <section id="run">
       <div class="container narrow">
         <div class="section-header reveal">
           <div class="section-label">How to run it</div>
@@ -282,7 +322,7 @@
       </div>
     </section>
 
-    <section id="clients">
+    <section id="clients" class="bg-alt">
       <div class="container narrow">
         <div class="section-header reveal">
           <div class="section-label">Other MCP clients</div>
@@ -294,7 +334,7 @@
       </div>
     </section>
 
-    <section id="conclusion" class="bg-alt">
+    <section id="conclusion">
       <div class="container">
         <div class="section-header reveal">
           <div class="section-label">Snowflake capabilities</div>

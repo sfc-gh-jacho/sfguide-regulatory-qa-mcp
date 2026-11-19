@@ -301,3 +301,9 @@ ol.walk > li::before { content: counter(w); position: absolute; left: 18px; top:
 .walk dd { margin: 0; }
 .walk-tip { margin-top: 18px; }
 @media (max-width: 560px) { .walk dl { grid-template-columns: 1fr; } ol.walk > li { padding-left: 20px; padding-top: 56px; } }
+
+/* Data section */
+.data-sample { margin-top: 10px; }
+.data-sample .compare { font-size: .82rem; }
+.data-sample .compare td { white-space: normal; }
+.data-note { font-size: .9rem; color: var(--muted, #5B7083); margin: 10px 0 0; }
